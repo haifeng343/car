@@ -1,0 +1,21 @@
+<wxs module="wxs" src="./index.wxs"></wxs>
+<view class="container {{isLoaded ? '' : 'hidden'}}">
+  <view class="background-line">
+    <view class='distance' style="{{distanceStyle}}" change:style="{{wxs.styleChange}}"></view>
+    <view class="tick-list">
+      <text wx:for="{{tickList}}" wx:key="label" style="left: {{item.pos}}PX">{{item.label}}</text>
+    </view>
+    <view class="point-left"></view>
+    <view class="point-right"></view>
+  </view>
+  <view class="move-view move-view-left" bindtouchstart="{{wxs.handleLeftTouchStart}}" bindtouchmove="{{wxs.handleLeftTouchMove}}" bindtouchend="{{wxs.handleTouchEnd}}" data-containerWidth="{{containerWidth}}" data-blockWidth="{{blockWidth}}" data-containerWidth="{{containerWidth}}" data-containerLeft="{{containerLeft}}" data-blockHalfWidth="{{blockHalfWidth}}" data-rightX="{{rightX}}" data-stepWidth="{{stepWidth}}" style="{{leftStyle}}" change:style="{{wxs.styleChange}}">
+    <view class="block">
+      <text class="icon-font left-icon {{leftIcon}}" />
+    </view>
+  </view>
+  <view class="move-view move-view-right" bindtouchstart="{{wxs.handleRightTouchStart}}" bindtouchmove="{{wxs.handleRightTouchMove}}" bindtouchend="{{wxs.handleTouchEnd}}" data-containerWidth="{{containerWidth}}" data-blockWidth="{{blockWidth}}" data-containerWidth="{{containerWidth}}" data-containerLeft="{{containerLeft}}" data-blockHalfWidth="{{blockHalfWidth}}" data-leftX="{{leftX}}" data-stepWidth="{{stepWidth}}" style="{{rightStyle}}" change:style="{{wxs.styleChange}}">
+    <view class="block">
+      <text class="icon-font right-icon {{rightIcon}}" />
+    </view>
+  </view>
+</view>

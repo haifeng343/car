@@ -1,0 +1,51 @@
+<view class="container">
+  <movable-area class="area">
+    <movable-view class="wrapper" direction="horizontal" inertia="true" x="{{x}}" out-of-bounds="true" damping="100" bindchange="handleMovableChange" bindtouchend="handleTouchend">
+      <view class="bg"></view>
+      <text class="icon-font uniE929" />
+      <view class="content">
+        <view class="top">
+          <view class="top-item1">
+            <view class="carIcon carIcon1" wx:if="{{data.brandName}}">
+              <imageExtend src="{{data.iconPath}}" defaultImage="../../assets/image/icon_logo.png" defaultNoneImage="../../assets/image/icon_logo.png" mode="aspectFit" defaultTime="{{30}}"/>
+            </view>
+            <view class="carIcon" wx:else>
+              <image class="allCarlogo" src="../../assets/image/allCarLogo.png" mode="aspectFit"></image>
+            </view>
+            <view class="top-item1-text1">
+            <view class="middle" wx:if="{{data.brandName && data.seriesName}}">{{data.seriesName}}</view>
+            <view class="middle" wx:if="{{data.brandName && !data.seriesName}}">全部车系</view>
+            <view class="middle" wx:if="{{!data.brandName && !data.seriesName}}">不限品牌</view>
+              <view class="middel">
+                <text class="icon-font cityIcon uniE96D"></text>
+                <view class="cityName">{{data.cityName?data.cityName:'全国'}}</view>
+              </view>
+            </view>
+            <view class="top-item1-text2">
+              <text class="top-item1-text2-label">花费/币:</text>
+              <text class="top-item1-text2-value">{{data.totalFee}}</text>
+            </view>
+          </view>
+          <view class="top-item2">
+            <text wx:if="{{data.minAge==0 && data.maxAge==99}}">不限年份</text>
+              <text wx:if="{{data.minAge>0 && data.maxAge==99}}">{{data.minAge}}年以上</text>
+              <text wx:if="{{data.minAge==0 && data.maxAge<99}}">{{data.maxAge}}年以下</text> 
+              <text wx:if="{{data.minAge>0 && data.maxAge<99}}">{{data.minAge}}-{{data.maxAge}}年</text> ｜ 
+              <text wx:if="{{data.minMileage==0 && data.maxMileage==9999}}">不限里程</text>
+              <text wx:if="{{data.minMileage>0 && data.maxMileage==9999}}">{{data.minMileage}}万里程以上</text>
+              <text wx:if="{{data.minMileage==0 && data.maxMileage<9999}}">{{data.maxAge}}万里程以下</text> 
+              <text wx:if="{{data.minMileage>0 && data.maxMileage<9999}}">{{data.minMileage}}-{{data.maxMileage}}万里程</text>
+          </view>
+        </view>
+        <view class="bottom">
+          <view class="bottom-item1">
+            <text>{{data.monitorDateText}}</text>
+          </view>
+        </view>
+      </view>
+    </movable-view>
+  </movable-area>
+  <view class="delete-button" catchtap="handleRemoveClick">
+    <text class="icon-font uniE901" style="color:#F25555" />
+  </view>
+</view>

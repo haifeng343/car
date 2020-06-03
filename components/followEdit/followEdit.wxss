@@ -1,0 +1,61 @@
+@import "../../assets/styles/font.wxss";
+.house_shortcuts {
+  position: fixed;
+  right: 12rpx;
+  bottom: 140rpx;
+  z-index: 30;
+  transform: translateX(0);
+  transition: transform 1s;
+}
+
+.house_shortcuts.hidden {
+  transform: translateX(calc(100% + 12rpx));
+}
+
+.select_back {
+  position: relative;
+  margin-bottom: 18rpx;
+}
+.select_back .select_item {
+  margin: 0 auto;
+  width:82rpx;
+  height:82rpx;
+  background:rgba(255,255,255,1);
+  border-radius: 50%;
+  font-size:24rpx;
+  font-weight:400;
+  color:#0050FE;
+  border:4rpx solid #0050FE;
+  box-shadow:0 4rpx 8rpx 0 rgba(0,0,0,0.16);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+.select_back .select_item.top {
+  font-size: 34rpx;
+}
+.select_back .select_item.active {
+  width:90rpx;
+  height:90rpx;
+  background:#0050FE;
+  color:rgba(255,255,255,1);
+  border:4rpx solid rgba(255,255,255,1);
+}
+.select_back .list, .select_back .list {
+  position: absolute;
+  top: 4rpx;
+  left: 8rpx;
+  z-index: -1;
+  opacity:0.9;
+  transform: translateX(0);
+  transition: transform .5s;
+}
+.select_back .show.list:nth-last-child(2) {
+  transform: translateX(-190rpx);
+  transition: transform .8s;
+}
+.select_back .show.list:last-child {
+  transform: translateX(-102rpx);
+  transition: transform .8s;
+}

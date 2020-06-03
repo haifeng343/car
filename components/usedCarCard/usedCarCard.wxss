@@ -1,0 +1,146 @@
+@import '../../assets/styles/font.wxss';
+.move{position: relative;width: calc(100%);height: 286rpx;}
+.card{display: flex;padding: 30rpx 0;margin:0 30rpx;border-bottom: 1px solid #E8E8E8;height: 220rpx;position: relative}
+.area{
+  width: calc(100% - 114px);
+  height: 286rpx;
+  margin: 0 auto;
+  position: absolute;
+  left: 50px;
+  top: 0
+}
+
+.wrapper {
+  width: calc(100vw);
+  height: 286rpx;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+  background: #ffffff;
+  margin-left: -50px
+}
+.card .card_image{width: 220rpx;height: 220rpx;margin-right: 32rpx;border-radius: 8rpx;overflow: hidden;}
+.card .card_words{flex: 1;}
+.card_words .title{
+  font-size: 32rpx;
+  font-weight:bold;
+  color: #1D1D1D;
+  margin-bottom: 10rpx;
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  height: 84rpx;
+}
+.card_words .year{font-size:24rpx;color: #474747;margin-bottom: 6rpx;}
+.card_words .label{height: 44rpx;overflow:hidden;margin-bottom: 6rpx;}
+.card_words .label .text{
+  display: inline-block;
+  font-size: 20rpx;
+  color: #0050FE;
+  height: 32rpx;
+  line-height: 32rpx;
+  background:rgba(0,80,254,0.13);
+  border-radius: 22rpx;
+  margin-right: 4rpx;
+  padding: 0 22rpx;
+}
+.card_words .price{color: #F1612A;font-size: 24rpx;display: inline-block;margin-right: 6rpx;}
+.card_words .price .p{margin-right: 14rpx;}
+.card_words .price .p .text{font-size: 36rpx;}
+.card_words .newprice{display: inline-block}
+.card_words .newprice .uniE968{
+  font-size:14rpx;
+  width: 12rpx;
+  height: 10rpx;
+  margin: 0 4rpx 0 10rpx;
+}
+.card_words .newprice .uniE967{
+  font-size:14rpx;
+  width: 10rpx;
+  height: 14rpx;
+  margin: 0 4rpx 0 10rpx;
+}
+.card_words .newprice .newLevel{
+  display: inline-block;
+  height:32rpx;
+  padding: 0 8rpx 0 0;
+  background:linear-gradient(180deg,rgba(253,185,138,1) 0%,rgba(247,107,28,1) 100%);
+  border-radius:82rpx 82rpx 82rpx 0;
+  font-size:20rpx;
+  line-height:32rpx;
+  color: #FFFFFF;
+  margin-right: 6rpx
+}
+.card_words .newprice .green{
+  background:linear-gradient(180deg,rgba(18,190,139,1) 0%,rgba(0,191,87,1) 100%)!important;
+  margin-right: 0
+}
+.remove{  
+  width: 64px; 
+  height: 284rpx; 
+  position: absolute;  
+  top: 0;  
+  right: 0;  
+  display: flex;  
+  justify-content: center;  
+  align-items: center;
+  background: rgb(243, 243, 243);
+  z-index: 1
+}  
+.remove image{width: 32rpx;height:32rpx;margin-left: -2rpx}
+.remove view{
+  font-size:28rpx;
+  font-weight:400;
+  color:#165EFB;
+  line-height:36rpx;
+}
+.select{
+  width: 50px; 
+  height: 286rpx; 
+  position: absolute;  
+  top: 0;  
+  left: 0;  
+  display: flex;  
+  justify-content: center;  
+  align-items: center;
+  z-index: 11
+}
+.select .uniE930 {
+  display: inline-block;
+  width: 40rpx;
+  height: 40rpx;
+  color: #fff;
+  line-height: 44rpx;
+  font-size: 20rpx;
+  text-align: center;
+  background-color: #fff;
+  border: 2rpx solid #165EFB;
+  border-radius: 42rpx;
+}
+.select .active{
+  color: #FFFFFF;
+  background-color: #165EFB;
+  border:none;
+  width: 42rpx;
+  height: 42rpx;
+}
+.card .classify {
+  position: absolute;
+  top: 40rpx;
+  left: 0;
+  width: 120rpx;
+  height: 38rpx;
+  color: #fff;
+  text-align: center;
+  border-radius: 8rpx 0 8rpx 0;
+  line-height: 38rpx;
+  font-size: 28rpx;
+  z-index: 7
+}
+.card .classify .gz_logo{width: 68rpx;height: 32rpx;opacity: 0.7;}
+.card .classify .yx_logo{width: 88rpx;height: 28rpx;opacity: 0.7;}
+.card .classify .rr_logo{width: 92rpx;height: 28rpx;opacity: 0.7;}

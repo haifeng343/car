@@ -1,0 +1,55 @@
+<view class="page">
+    <view class="index-list">
+        <block wx:for="{{indexList}}" wx:for-item="item" wx:key='item'>
+            <view class="index-item" data-item='{{item}}' catchtap="handleScrollToIndex">{{item}}</view>
+        </block>
+    </view>
+    <view class="header">
+        <view class="header_text">{{topText}}</view>
+        <view class="search-bar-wrapper flex-box-center" bindtap="goToSearch">
+            <text class="icon-font uniE908" />
+            <text class="placeholder">请输入城市名或拼音进行搜索</text>
+        </view>
+    </view>
+    <scroll-view scroll-y='true' throttle="{{false}}" class="city-list" scroll-into-view="{{viewIndex}}">
+        <view class="section" id="topview">
+            <view class="position">
+                <view class="title position-title">定位</view>
+                <view class="content flex-box-center-between">
+                    <view class="pos flex-box-center" data-name='{{userCity.name}}' data-value='{{userCity.code}}'  bindtap="handleGetCityInfo">
+                        <text class="icon-font uniE964"></text>
+                        <text class="name">{{userCity.name}}</text>
+                    </view>
+                    <block wx:if="{{userCity.name === '定位失败'}}">
+                        <view class="repos" bindtap="handleRepos">重新定位</view>
+                    </block>
+                </view>
+            </view>
+            <view class="hot-city" wx:if="{{hotCity.lenght}}">
+                <view class="title">
+                    <image class="title_icon_img" src="../../assets/image/icon_hot_city.png"></image>
+                    <view>热门城市</view>
+                </view>
+                <view class="cell-list flex-box-center">
+                    <block wx:for="{{hotCity}}" wx:for-item="item" wx:key="item.name">
+                        <view class="cell-item" data-name='{{item.name}}' data-value='{{item.value}}' bindtap="handleGetCityInfo">
+                            <view class="text">{{item.name}}</view>
+                        </view>
+                    </block>
+                </view>
+            </view>
+        </view>
+        <block wx:for="{{data}}" wx:for-item="item" wx:key="{{item.p}}">
+            <view class="city-item" id="{{'city' + item.p}}">
+                <view class="title">{{item.p}}</view>
+                <view class="content">
+                    <block wx:for="{{item.cl}}" wx:for-item="item2" wx:key="name">
+                        <view class="city" data-name='{{item2.name}}' data-value='{{item2.value}}' bindtap="handleGetCityInfo">
+                            {{item2.name}}
+                        </view>
+                    </block>
+                </view>
+            </view>
+        </block>
+    </scroll-view>
+</view>

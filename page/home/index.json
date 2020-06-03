@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "imageExtend": "../../components/imageExtend/imageExtend",
+    "AuthDialog": "../../components/AuthDialog/AuthDialog",
+    "Range": "../../components/Range/index",
+    "CouponDialog": "/components/CouponDialog/index"
+  },
+  "navigationBarTitleText": "帮盯盯-车盯盯",
+  "disableScroll": true
+}

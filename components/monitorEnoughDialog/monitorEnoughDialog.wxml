@@ -1,0 +1,52 @@
+<view class="mask" bindtap="bindConfirm" catchtouchmove="preventTouchMove">
+  <view class="top_image" catchtap="stopEvent">
+    <image class="image" src="../../assets/image/dialog_top.png"></image>
+    <view class="mask_out mask_three {{paddingBottom===1?'mask_n_type':''}}">
+      <view class="mask_title">{{dialogTitle}}</view>
+      <view class="mask_content">{{dialogText}}</view>
+      <view class="mask_mold">
+        <view class="mold_first mold_three}}">
+          <block  wx:for="{{list}}" wx:key="index">
+            <view class="mold {{index ===0?'mold_normal':'mold_other'}} {{index ===2?'mold_ab':''}}" catchtap="navigateToPlatform" data-platform="{{item.key}}">
+              <view class="mold_name" wx:if="{{index ===0}}">
+                <image class="image" wx:if="{{item.value>0}}" src="../../assets/image/dialog_car_one.png"></image>
+                <!-- <image wx:else src="https://piaodingding.oss-cn-hangzhou.aliyuncs.com/images/wechat/fdd/three_none.png"></image> -->
+                <view  wx:if="{{item.value>=0}}" class="num">{{item.value}}辆</view>
+                <view  wx:else class="num">暂无数据</view>
+                <view  wx:if="{{item.value>0}}" class="line" ></view>
+                <image class="image gz_logo {{item.value>0?'':'gz_un_logo'}}" wx:if="{{item.key === 'gz'}}" src="../../assets/image/gz_logo.png"></image>
+                <image class="image yx_logo {{item.value>0?'':'yx_un_logo'}}" wx:if="{{item.key === 'yx'}}" src="../../assets/image/yx_logo.png"></image>
+                <image class="image rr_logo {{item.value>0?'':'rr_un_logo'}}" wx:if="{{item.key === 'rr'}}" src="../../assets/image/rr_logo.png"></image>
+                <image class="image arrow {{item.key === 'gz'?'gz_arrow':''}} {{item.key === 'yx'?'yx_arrow':''}} {{item.key === 'rr'?'rr_arrow':''}}" wx:if="{{item.value>0}}" src="../../assets/image/arrow.png"></image>
+              </view>
+              <view class="mold_name" wx:if="{{index ===1}}">
+                <image class="image" wx:if="{{item.value>0}}" src="../../assets/image/dialog_car_two.png"></image>
+                <image class="image" wx:else src="../../assets/image/dialog_car_none.png"></image>
+                <view  wx:if="{{item.value>=0}}" class="num">{{item.value}}辆</view>
+                <view  wx:else class="num">暂无数据</view>
+                <view  wx:if="{{item.value>0}}" class="line" ></view>
+                <image class="image gz_logo {{item.value>0?'':'gz_un_logo'}}" wx:if="{{item.key === 'gz'}}" src="../../assets/image/gz_logo.png"></image>
+                <image class="image yx_logo {{item.value>0?'':'yx_un_logo'}}" wx:if="{{item.key === 'yx'}}" src="../../assets/image/yx_logo.png"></image>
+                <image class="image rr_logo {{item.value>0?'':'rr_un_logo'}}" wx:if="{{item.key === 'rr'}}" src="../../assets/image/rr_logo.png"></image>
+                <image class="image arrow {{item.key === 'gz'?'gz_arrow':''}} {{item.key === 'yx'?'yx_arrow':''}} {{item.key === 'rr'?'rr_arrow':''}}" wx:if="{{item.value>0}}" src="../../assets/image/arrow.png"></image>
+              </view>
+              <view class="mold_name" wx:if="{{index ===2}}">
+                <image class="image" wx:if="{{item.value>0}}" src="../../assets/image/dialog_car_three.png"></image>
+                <image class="image" wx:else src="../../assets/image/dialog_car_none.png"></image>
+                <view  wx:if="{{item.value>=0}}" class="num">{{item.value}}辆</view>
+                <view  wx:else class="num">暂无数据</view>
+                <view  wx:if="{{item.value>0}}" class="line" ></view>
+                <image class="image gz_logo {{item.value>0?'':'gz_un_logo'}}" wx:if="{{item.key === 'gz'}}" src="../../assets/image/gz_logo.png"></image>
+                <image class="image yx_logo {{item.value>0?'':'yx_un_logo'}}" wx:if="{{item.key === 'yx'}}" src="../../assets/image/yx_logo.png"></image>
+                <image class="image rr_logo {{item.value>0?'':'rr_un_logo'}}" wx:if="{{item.key === 'rr'}}" src="../../assets/image/rr_logo.png"></image>
+                <image class="image arrow {{item.key === 'gz'?'gz_arrow':''}} {{item.key === 'yx'?'yx_arrow':''}} {{item.key === 'rr'?'rr_arrow':''}}" wx:if="{{item.value>0}}" src="../../assets/image/arrow.png"></image>
+              </view>
+            </view>
+          </block>
+        </view>
+      </view>
+      <view class="mask_know" catchtap="bindConfirm">{{dialogBtn}}</view>
+    </view>
+  </view>
+</view>
+<gzTip style="display:{{gzDisplay}}" text="若跳转后出现白屏，关闭小程序后再次跳转即可" bind:cancelEvent="getJumpCancel" bind:confirmEvent="getJumpConfirm"></gzTip>

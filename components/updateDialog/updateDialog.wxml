@@ -1,0 +1,60 @@
+<wxs src="../../utils/tools.wxs" module="filter" />
+<view class="mask" bindtap="bindCancel" catchtouchmove="preventTouchMove">
+    <view class="mask_content" catchtap="stopEvent">
+      <view class="house_image">
+        <view class="house_title">确认变更监控条件</view>
+      </view>
+      <view class="content">
+        <view class="mask_task">
+          <view class="task">
+            <view><text>车型:</text><text class="update" wx:if="{{updateData.brandName!=defalutData.brandName||updateData.seriesName!=defalutData.seriesName}}">已改</text></view>
+            <text class="task_right">{{updateData.brandName?updateData.brandName:'不限品牌'}}-{{updateData.seriesName?updateData.seriesName:'不限车系'}}</text>
+          </view>
+          <view class="task">
+            <view><text>车价:</text><text class="update" wx:if="{{updateData.minPrice!=defalutData.minPrice||updateData.maxPrice!=defalutData.maxPrice}}">已改</text></view>
+            <text class="task_right" wx:if="{{updateData.minPrice==0&&updateData.maxPrice === 50}}">不限</text>
+            <text class="task_right" wx:if="{{updateData.minPrice>0&&updateData.maxPrice === 50}}">高于{{updateData.minPrice}}万</text>
+            <!-- <text class="task_right" wx:if="{{updateData.minPrice==0&&updateData.maxPrice<50}}">低于{{updateData.maxPrice}}万</text> -->
+            <text class="task_right" wx:if="{{updateData.maxPrice<50}}">{{updateData.minPrice}}-{{updateData.maxPrice}}万</text>
+          </view>
+          <view class="task">
+            <view><text>车龄:</text><text class="update" wx:if="{{updateData.minAge!=defalutData.minAge||updateData.maxAge!=defalutData.maxAge}}">已改</text></view>
+            <text class="task_right" wx:if="{{updateData.minAge==0&&updateData.maxAge === 6}}">不限</text>
+            <text class="task_right" wx:if="{{updateData.minAge>0&&updateData.maxAge === 6}}">高于{{updateData.minAge}}年</text>
+            <text class="task_right" wx:if="{{updateData.maxAge<6}}">{{updateData.minAge}}-{{updateData.maxAge}}年</text>
+          </view>
+          <view class="task">
+            <view><text>里程:</text><text class="update" wx:if="{{updateData.minMileage!=defalutData.minMileage||updateData.maxMileage!=defalutData.maxMileage}}">已改</text></view>
+            <text class="task_right" wx:if="{{updateData.minMileage==0&&updateData.maxMileage === 14}}">不限</text>
+            <text class="task_right" wx:if="{{updateData.minMileage>0&&updateData.maxMileage === 14}}">高于{{updateData.minMileage}}万公里</text>
+            <text class="task_right" wx:if="{{updateData.maxMileage<14}}">{{updateData.minMileage}}-{{updateData.maxMileage}}万公里</text>
+          </view>
+          <view class="task">
+            <view>
+              <text>排量:</text>
+              <text class="update" wx:if="{{updateData.minDisplacement!=defalutData.minDisplacement||updateData.maxDisplacement!=defalutData.maxDisplacement}}">已改</text>
+            </view>
+            <text class="task_right" wx:if="{{updateData.minDisplacement==0&&updateData.maxDisplacement === 4}}">不限</text>
+            <text class="task_right" wx:if="{{updateData.minDisplacement>0&&updateData.maxDisplacement === 4}}">高于{{updateData.minDisplacement}}升</text>
+            <text class="task_right" wx:if="{{updateData.maxDisplacement<4}}">{{updateData.minDisplacement}}-{{updateData.maxDisplacement}}升</text>
+          </view>
+          <view class="task" wx:if="{{updateData.autoType!=defalutData.autoType||updateData.gearbox!=defalutData.gearbox||updateData.drive!=defalutData.drive||updateData.fuelType!=defalutData.fuelType||updateData.emission!=defalutData.emission||updateData.countryType!=defalutData.countryType||updateData.carColor!=defalutData.carColor||filter.arrCompare(updateData.starConfig,defalutData.starConfig) === 2||updateData.sortType!=defalutData.sortType}}">
+            <view>
+              <text>其他:</text><text class="update">已改</text>
+            </view>
+            <text class="task_right">已修改</text>
+          </view>
+          <view class="task" wx:else>
+            <view>
+              <text>其他:</text>
+            </view>
+            <text class="task_right">未修改</text>
+          </view>
+        </view>
+        <view class="mask-btn">
+          <text class="cancel" catchtap="bindCancel">再看看</text>
+          <text class="confirm" catchtap="bindConfirm">确认</text>
+        </view>
+      </view>
+    </view>
+  </view>

@@ -1,0 +1,7 @@
+{
+  "disableScroll": true,
+  "navigationBarTitleText": "筛选",
+  "usingComponents": {
+    "Range": "/components/Range/index"
+  }
+}

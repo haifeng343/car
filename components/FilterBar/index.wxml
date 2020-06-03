@@ -1,0 +1,38 @@
+<wxs src="../../utils/tools.wxs" module="tools" />
+
+<view class="container">
+  <view class="tab-list">
+    <view wx:for="{{filterList}}" wx:key="title" class="tab-item {{item.class}} {{item.active ? 'active' : ''}}" bindtap="handleClickTabitem" data-item="{{item}}">
+      <text class="tab-title">{{item.title}}</text>
+      <text class="icon-font uniE951"></text>
+    </view>
+  </view>
+</view>
+<view class="toppanel-container" wx:if="{{showTopPanel}}">
+  <TopPanel id="TopPanel" bind:onClose="handleHideTopPanel">
+    <view class="sort-panel" wx:if="{{currentPanel === 'sort'}}">
+      <view class="sort-list">
+        <view class="sort-item {{item.active ? 'active' : ''}}" wx:for="{{sortList}}" wx:key="label" bindtap="handleSelectSort" data-value="{{item.value}}">
+          <text>{{item.label}}</text>
+          <text class="icon-font uniE930" wx:if="{{item.active}}" />
+        </view>
+      </view>
+    </view>
+    <view class="price-panel" wx:if="{{currentPanel === 'price'}}">
+      <view class="content-wrapper">
+        <view class="price-title">
+          <image class="title_icon_img" src="../../assets/image/icon_list.png" />
+          <text>价格</text>
+          <text class="unit">(万)</text>
+          <text class="tag">{{tools.showText(minPrice, maxPrice, 50, '价格')}}</text>
+        </view>
+        <view class="price-range-wrapper">
+          <Range min="{{minPrice}}" max="{{maxPrice}}" minStep="{{0}}" maxStep="{{50}}" step="{{1}}" tick="{{['0', '10', '20', '30', '40', '不限']}}" bind:onChange="handlePriceChange" />
+        </view>
+      </view>
+      <view class="button-wrapper">
+        <view class="button button-submit" bindtap="handleSubmit">查看车源</view>
+      </view>
+    </view>
+  </TopPanel>
+</view>

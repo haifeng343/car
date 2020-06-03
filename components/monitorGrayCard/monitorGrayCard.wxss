@@ -1,0 +1,293 @@
+@import '../../assets/styles/flex.wxss';
+@import '../../assets/styles/font.wxss';
+
+.monitor_card {
+  position: relative;
+  width: 100%;
+  height: 312rpx;
+  color: #d6d6d6;
+  display: flex;
+  align-items: center;
+}
+
+.area {
+  width: calc(100% - 67px);
+  height: 312rpx;
+}
+.cityName{
+  max-width: 100rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.wrapper {
+  width: calc(100vw - 16rpx);
+  height: 312rpx;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+}
+.bg {
+  width: 100%;
+  height: 312rpx;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url('https://piaodingding.oss-cn-hangzhou.aliyuncs.com/images/wechat/cdd/monitor_gray_card.png');
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.monitor_card .card_content {
+  position: relative;
+}
+
+.monitor_card .card_message {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 18rpx 0 44rpx;
+  position: relative;
+}
+
+.monitor_long_card .card_message {
+  margin-bottom: 16rpx;
+  padding-top: 30rpx;
+}
+
+.monitor_card .card_date {
+  width: 140rpx;
+  font-size: 28rpx;
+}
+
+.monitor_card .card_address {
+  width: 300rpx;
+  font-size: 56rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.monitor_long_card .card_address {
+  width: 480rpx;
+}
+
+.monitor_card .card_address .text {
+  max-width: 240rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-right: 16rpx;
+}
+
+.monitor_card .card_address .city_text {
+  width: 124rpx;
+}
+
+.monitor_card .card_address .city_type {
+  width: 304rpx;
+  height: 80rpx;
+  overflow: hidden;
+  line-height: 66rpx;
+}
+
+.monitor_card .card_address .type {
+  font-size: 24rpx;
+  border: 1px solid #d6d6d6;
+  padding: 0 14rpx;
+  margin-right: 10rpx;
+  border-radius: 22rpx;
+  margin-top: 10rpx;
+  display: inline-block;
+  height: 44rpx;
+  line-height: 44rpx;
+}
+
+.monitor_card .card_budget {
+  flex: 1;
+  font-size: 28rpx;
+  text-align: right;
+  margin-right: 20rpx;
+}
+
+.monitor_card .past_card, .monitor_card .card_search {
+  margin-top: 10rpx;
+}
+
+.card_budget .card_money .money {
+  font-size: 60rpx;
+}
+
+.card_search .card_money .money {
+  font-size: 40rpx;
+}
+
+.past_card .card_money .money {
+  font-size: 40rpx;
+}
+
+.card_budget .card_down_money {
+  margin-top: -12rpx;
+}
+
+.past_card .card_down_money, .card_search .card_down_money {
+  margin-top: 0;
+}
+
+.monitor_card .card_total {
+  height: 48rpx;
+  display: flex;
+  align-items: center;
+  font-size: 32rpx;
+  padding-left: 44rpx;
+}
+
+.monitor_long_card .card_total {
+  display: flex;
+}
+
+.monitor_long_card .card_total .location {
+  width: 320rpx;
+  box-sizing: border-box;
+  padding-left: 90rpx;
+}
+
+.monitor_long_card .card_total .card_price {
+  flex: 1;
+  text-align: right;
+  margin-right: 38rpx;
+}
+
+.monitor_card .card_line {
+  padding: 0 44rpx;
+}
+
+.monitor_card .card_line .line {
+  width: 100%;
+  height: 1rpx;
+  background: #fff;
+  margin-top: 20rpx;
+}
+
+.monitor_gray_card .card_line .line {
+  background: #ebebeb;
+}
+
+.card_total .romm_num {
+  background: #fff;
+  text-align: center;
+  display: inline-block;
+  margin-left: 8rpx;
+}
+
+.monitor_card .card_time {
+  height: 110rpx;
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  padding-left: 44rpx;
+  position: relative;
+  margin-top: 2%;
+}
+
+.card_time .detail_btn {
+  width: 192rpx;
+  height: 64rpx;
+  color: #10bcae;
+  text-align: center;
+  background: #fff;
+  display: inline-block;
+  line-height: 64rpx;
+  border-radius: 32rpx;
+  position: absolute;
+  top: 50%;
+  margin-top: -32rpx;
+  right: 30rpx;
+}
+
+.card_time .activate_btn {
+  background: -webkit-linear-gradient(top, #fbd249, #f4a423);
+  color: #fff;
+}
+
+.card_time .time_monitor {
+  width: 44rpx;
+  height: 44rpx;
+  position: absolute;
+  top: 50%;
+  margin-top: -22rpx;
+}
+
+.card_time .time_text {
+  padding-left: 64rpx;
+}
+
+.card_time .time_text text {
+  margin-right: 8rpx;
+}
+
+.card_time .time_text .pay_money {
+  background: #d6d6d6;
+  color: #fff;
+  height: 44rpx;
+  display: inline-block;
+  text-align: center;
+  line-height: 44rpx;
+  border-radius: 4rpx;
+  padding: 0 14rpx;
+}
+
+.remove {
+  width: 67px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.remove image {
+  width: 42rpx;
+  height: 44rpx;
+}
+
+.carIcon {
+  width: 80rpx;
+  height: 80rpx;
+  background-color: #fff;
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.17);
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 12rpx;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+  opacity: 0.6;
+  position: relative;
+  top: 8rpx;
+}
+.carIcon1{
+  padding: 10rpx;
+  box-sizing: border-box;
+}
+.carIcon .allCarLogo{
+  width: 100%;
+  height: 100%;
+}
+
+.middel {
+  font-size: 32rpx;
+  margin-top: 14rpx;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+
+.card_location {
+  width: 24rpx;
+  color: #d6d6d6 !important;
+  height: 32rpx;
+  margin-top: 6rpx;
+  margin-right: 4rpx;
+}

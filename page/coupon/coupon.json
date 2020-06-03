@@ -1,0 +1,10 @@
+{
+  "backgroundColor": "#12BEAC",
+  "navigationBarTitleText": "我的卡券",
+  "usingComponents": {
+    "NoCoupon": "/components/NoCoupon/index",
+    "FreeCard": "/components/FreeCard/index",
+    "CouponCard": "/components/CouponCard/index",
+    "BaseActionDialog": "/components/BaseActionDialog/index"
+  }
+}

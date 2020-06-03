@@ -1,0 +1,9 @@
+<wxs src="../../utils/tools.wxs" module="filter" />
+<view class="car_detail" bindtap="goToDetail">
+  <view class="check_view">总计:{{allCount}}辆(已选:{{showCount}}辆)</view>
+  <view class="check_view">{{sortType === 1?'最低':'推荐'}}:¥{{filter.lowPricefun(lowPrice)}}万</view>
+  <view class="check_detail">
+    <text>查看明细</text>
+    <text class="icon-font uniE90C"></text>
+  </view>
+</view>

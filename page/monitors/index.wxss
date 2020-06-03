@@ -1,0 +1,36 @@
+@import '../../assets/styles/font.wxss';
+page{background-color: #F9F9F9;width: 100%;height: 100%;}
+.tab{height: 120rpx;background: #FFFFFF;display: flex;justify-content: center;align-items: center;}
+.tab_btn{
+  width:700rpx;
+  height:84rpx;
+  background:rgba(247,247,247,1);
+  border-radius:42rpx;
+  margin: 0 auto;
+  font-weight:500;
+  font-size:28rpx;
+}
+.tab_btn text{
+  display: inline-block;
+  width:228rpx;
+  height:84rpx;
+  line-height: 84rpx;
+  text-align: center;
+  border-radius: 42rpx;
+}
+.tab_btn .active{background: #F1612A;width:240rpx;color: #FFFFFF;}
+.card_list{padding: 12rpx 8rpx 0;}
+.section_empty{display: flex;height: 100%;padding: 0;flex-direction: column}
+.search_no-data{flex: 1;background: #FFFFFF;display: flex;flex-direction: column;justify-content: center;align-items: center;padding-bottom: 20rpx;box-sizing: border-box;}
+.search_no-data_img {width: 602rpx;height: 486rpx;}
+.search_no-data_text {font-size:28rpx;font-weight:400;color:#0050FE;line-height:80rpx;height: 40rpx;position: absolute;bottom: 180rpx;display: block;}
+.tip-wrapper {
+  font-size: 24rpx;
+  color: #bec3cd;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40rpx;
+}
+.uniE915 {font-size: 20rpx;color: #bec3cd;margin-right: 10rpx;}

@@ -1,0 +1,31 @@
+export default class statisicsData{
+    allCount:number= 0;
+    showCount:number= 0;
+    averagePrice:number=0;
+    lowPrice:number= 0;
+    lowPriceData:IFormatResult|null=null;
+    firstlowPriceData:IFormatResult|null=null;
+    stopDisplay:string= 'none';
+    bottomType:number= 0;
+    monitorenoughDisplay: string='none';
+    monitorShow:string= 'none';
+    publicDisplay:string='none';
+    updateMonitorDisplay:string= 'none';
+    monitorId:string='';
+    ddCoin:number = 0;
+    sortType:number = 0;
+    fee: number=1;
+    startTimeName:string='';
+    taskTime:string = '';
+    totalFee:string = '';
+    bindPhone:boolean = false;
+    bindPublic:boolean = false;
+    enoughList:number[]=[];
+    gzCount:number=0;
+    yxCount:number=0;
+    rrCount:number=0;
+    allOriginalData: IFormatResult[]=[];
+    sourceData :ISourceData[] = [];
+    updateData = {};
+    defalutData = {};
+}

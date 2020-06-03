@@ -1,0 +1,98 @@
+<wxs src="../../utils/tools.wxs" module="filter" />
+<view class="move" wx:if="{{movable}}">
+<movable-area class="area">
+    <movable-view class="wrapper" direction="horizontal" data-index="{{idx}}" inertia="true" x="{{x}}" out-of-bounds="true" damping="100" bindchange="handleMovableChange" bindtouchend="handleTouchend" disabled="{{editFlag}}">
+      <view class="card" data-index="{{idx}}" data-carid="{{item.carId}}" data-platform="{{item.platform}}" catchtap="goToPlatformDetail">
+        <view class="card_image">
+          <imageExtend src="{{item.thumb}}"></imageExtend>
+        </view>
+        <view class="card_words">
+          <view class="title">{{item.title}}</view>
+          <view class="year">{{item.licensedText}} | {{item.mileageText}}</view>
+          <view class="label">
+            <block wx:for="{{item.tag}}" wx:key="index" wx:for-item="itemTag">
+              <text class="text">{{itemTag}}</text>
+            </block>
+          </view>
+          <view class="price">
+            <text class="p"><text class="text">{{filter.firstPayfun(item.priceText)}}</text>万</text>
+            <text class="m" wx:if="{{item.firstPay!==0}}">首付{{item.firstPayText}}</text>
+          </view>
+          <view class="newprice">
+            <view class="newLevel" wx:if="{{item.newLevel&&item.newLevel >0 }}">
+              <text class="icon-font uniE968"></text>
+              <text class="">新上</text>
+            </view>
+            <view class="newLevel pricedown green" wx:if="{{item.priceDownLevel&&item.priceDownLevel >0 }}">
+              <text class="icon-font uniE967"></text>
+              <text class="">降价<text>{{item.priceMargin}}万</text></text>
+            </view>
+          </view>
+        </view>
+        <view class="classify" wx:if="{{item.platform === 'gz'}}">
+          <image class="gz_logo" src="../../assets/image/gz_logo.png"></image>
+        </view>
+        <view class="classify" wx:if="{{item.platform === 'yx'}}">
+          <image class="yx_logo" src="../../assets/image/yx_logo.png"></image>
+        </view>
+        <view class="classify" wx:if="{{item.platform === 'rr'}}">
+          <image class="rr_logo" src="../../assets/image/rr_logo.png"></image>
+        </view>
+      </view>
+    </movable-view>
+  </movable-area>
+  <view class="remove" data-index="{{idx}}" catchtap="delItem">
+    <view>
+      <image src="../../assets/image/no_attention.png"></image>
+      <view>屏</view>
+      <view>蔽</view>
+      <view>车</view>
+      <view>源</view>
+    </view>
+  </view>
+  <view class="select" wx:if="{{editFlag}}" data-index="{{idx}}" catchtap="selectItem">
+    <view class="icon-font uniE930 {{item.collection?'active':''}}"></view>
+  </view>
+</view>
+
+<view wx:else>
+  <view class="card" data-carid="{{item.carId}}" data-platform="{{item.platform}}" catchtap="goToPlatformDetail">
+    <view class="card_image">
+      <imageExtend src="{{item.thumb}}"></imageExtend>
+    </view>
+    <view class="card_words">
+      <view class="title">{{item.title}}</view>
+      <view class="year">{{item.licensedText}} | {{item.mileageText}}</view>
+      <view class="label">
+        <block wx:for="{{item.tag}}" wx:key="index" wx:for-item="itemTag">
+          <text class="text">{{itemTag}}</text>
+        </block>
+      </view>
+      <view class="price">
+        <text class="p"><text class="text">{{filter.firstPayfun(item.priceText)}}</text>万</text>
+        <text class="m" wx:if="{{item.firstPay!==0}}">首付{{item.firstPayText}}</text>
+      </view>
+      <view class="newprice">
+        <view class="newLevel" wx:if="{{item.newLevel&&item.newLevel >0 }}">
+          <text class="icon-font uniE968"></text>
+          <text class="">新上</text>
+        </view>
+        <view class="newLevel pricedown green" wx:if="{{item.priceDownLevel&&item.priceDownLevel >0 }}">
+          <text class="icon-font uniE967"></text>
+          <text class="">降价<text>{{item.priceMargin}}万</text></text>
+        </view>
+      </view>
+    </view>
+    <view class="classify" wx:if="{{item.platform === 'gz'}}">
+      <image class="gz_logo" src="../../assets/image/gz_logo.png"></image>
+    </view>
+    <view class="classify" wx:if="{{item.platform === 'yx'}}">
+      <image class="yx_logo" src="../../assets/image/yx_logo.png"></image>
+    </view>
+    <view class="classify" wx:if="{{item.platform === 'rr'}}">
+      <image class="rr_logo" src="../../assets/image/rr_logo.png"></image>
+    </view>
+  </view>
+</view>
+
+<gzTip style="display:{{gzDisplay}}" text="若跳转后出现白屏，关闭小程序后再次跳转即可" bind:cancelEvent="getJumpCancel" bind:confirmEvent="getJumpConfirm"></gzTip>

@@ -1,0 +1,20 @@
+<view class="page">
+    <view class="header">
+        <view class="search-bar-wrapper flex-box-center">
+            <text class="icon-font uniE908" />
+            <input class="input" type="text" placeholder="请输入城市名或拼音进行搜索" placeholder-style="color:#bebebe" bindconfirm="handleSearch" value="{{value}}" bindinput="inputSearch" auto-focus="true" focus="{{isFocus}}" confirm-type="search" />
+            <view class="tap-clear" bindtap="clearInput" wx:if='{{value}}'><icon type="clear" size="16" style="color:#C3C3C3"/></view>
+        </view>
+        <view class="go-back" bindtap="goBack">取消</view>
+    </view>
+    <scroll-view scroll-y class="city-list flex-column">
+        <block wx:for="{{result}}" wx:for-item="item" wx:key='{{index}}'>
+            <view class="city-item" data-item='{{item}}' bindtap="handleSelectCity">
+                <text class="name">{{item.cityName}}</text>
+                <text class="icon-font uniE928" />
+            </view>
+        </block>
+        <view wx:if="{{hasAsked && resultLength == 0}}" class="city-no-data">未找到相关结果~</view>
+        <view wx:if="{{hasAsked && resultLength == -1}}" class="city-no-data">请输入想要搜索的信息~</view>
+    </scroll-view>
+</view>

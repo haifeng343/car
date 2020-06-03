@@ -1,0 +1,104 @@
+<wxs src="../../utils/tools.wxs" module="filter" />
+<view class="header">
+<FilterBar data="{{updateData}}" type="{{2}}" bind:onSubmit="submit" />
+  <checkDetail wx:if="{{dataFlag === 1}}" showCount="{{allOriginalData.length}}" allCount="{{allCount}}" lowPrice="{{lowPrice}}" sortType="{{sortType}}" bind:detailEvent="goToDetail"></checkDetail>
+</view>
+<view class="block"></view>
+<view class="card_list {{dataFlag === 2||dataFlag === 3 ? 'section_empty' : ''}}">
+  <searchEmpty wx:if="{{dataFlag === 2}}" searchType="{{bottomType ===1?2:1}}" mSelect="{{mSelect}}" bind:selectEvent="goToMAllSelect">></searchEmpty>
+  <noNetwork wx:if="{{dataFlag === 3}}" title="网络异常，请刷新重试"></noNetwork>
+  <noNetwork wx:if="{{dataFlag === 4}}" title="网络异常，请返回重试"></noNetwork>
+  <view class="car_card" wx:if="{{dataFlag === 1}}">
+    <block wx:for="{{allData}}" wx:key="carId">
+      <usedCarCard 
+        item="{{item}}"  
+        movable="{{bottomType === 1}}" 
+        idx="{{index}}" 
+        cardType="{{2}}" 
+        editFlag="{{editFlag}}"
+        singleEditFlag="{{singleEditFlag}}"
+        bind:selectItemEvent="goToSelect"
+        bind:deleteEvent="deleteItem">
+</usedCarCard>
+    </block>
+    <view class="no_more_data" wx:if="{{allData.length&&allData.length==allOriginalData.length&&mSelect ==1}}">已展示全部车源</view>
+    <view class="no_more_data" wx:if="{{allData.length&&allData.length==allOriginalData.length&&mSelect ==2}}">以上为新上车源，点击
+      <text class="no_text" bindtap="goTocheckAll">查看全部</text>车源</view>
+    <view class="no_more_data" wx:if="{{allData.length&&allData.length==allOriginalData.length&&mSelect ==3}}">以上为降价车源，点击
+      <text class="no_text" bindtap="goTocheckAll">查看全部</text>车源</view>
+    <view class="dot_load">
+      <mpLoading type="dot-gray" tips="加载中" show="{{loadingShow}}"></mpLoading>
+    </view>
+  </view>
+</view>
+<carLoading loadingDisplay="{{loadingDisplay}}"></carLoading>
+
+<followEdit 
+  bottomType="{{bottomType}}" 
+  countFlag="{{bottomType === 1?dataFlag:''}}" 
+  listType="{{mSelect}}" 
+  scrollIng="{{scrollIng}}" 
+  editFlag="{{editFlag}}" 
+  bind:editEvent="goEdit" 
+  bind:selectEvent="goMselect">
+</followEdit>
+
+<monitorButton 
+  wx:if="{{loadingDisplay === 'none'}}" 
+  buttonType="{{2}}" 
+  dataFlag="{{dataFlag}}" 
+  bind:goBackEvent="goBack" 
+  bind:goRefreshEvent="goRefresh">
+</monitorButton>
+
+<monitorBottom 
+  wx:if="{{loadingDisplay === 'none'&&(dataFlag ===1||dataFlag ===2)}}" 
+  bottomType="{{bottomType}}" 
+  taskTime="{{taskTime}}" 
+  totalFee="{{totalFee}}"
+  editFlag="{{editFlag}}"
+  selectAllFlag="{{selectAllFlag}}" 
+  selectNum="{{selectNum}}"
+  bind:stopMonitorEvent="getStopMonitor"
+  bind:goBackEvent="goBack" 
+  bind:goSaveEvent="goSave"
+  bind:selectAllEvent="goToSelectAll"
+  bind:deleteBatchEvent="deleteBatchItem">
+</monitorBottom>
+
+<monitorEnoughDialog 
+  dialogTitle="{{dialogTitle}}" 
+  dialogText="{{dialogText}}" 
+  dialogBtn="{{dialogBtn}}" 
+  style="display:{{monitorenoughDisplay}}" 
+  list="{{enoughList}}" 
+  enoughType="{{2}}"
+  bind:enoughEvent="getEnoughEvent">
+</monitorEnoughDialog>
+
+<stopDialog 
+  startTimeName="{{startTimeName}}" 
+  taskTime="{{taskTime}}" 
+  fee="{{fee}}" 
+  totalFee="{{totalFee}}" 
+  style="display:{{stopDisplay}}"
+  bind:stopCancelEvent="getStop" 
+  bind:stopConfrimEvent="getStopConfirm" >
+</stopDialog>
+
+<updateDialog 
+  updateData="{{updateData}}" 
+  defalutData="{{defalutData}}" 
+  style="display:{{updateMonitorDisplay}}"
+  bind:updateCancelEvent="getUpdateCancelEvent" 
+  bind:updateConfrimEvent="getUpdateConfrimEvent" >
+</updateDialog>
+
+<followDialog 
+  text="{{followText}}" 
+  followType="{{followType}}" 
+  style="display:{{followDisplay}}" 
+  bind:knowEvent="followKnowEvent" 
+  bind:confirmEvent="followConfirmEvent" 
+  bind:cancelEvent="followCancelEvent">
+</followDialog>

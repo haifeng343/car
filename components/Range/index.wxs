@@ -1,0 +1,246 @@
+var handleLeftTouchStart = function(event, ownerInstance) {
+  var state = ownerInstance.getState();
+  state.touchEnd = false;
+  ownerInstance.callMethod('handleLeftTouchStart');
+};
+
+var handleRightTouchStart = function(event, ownerInstance) {
+  var state = ownerInstance.getState();
+  state.touchEnd = false;
+  ownerInstance.callMethod('handleRightTouchStart');
+};
+
+var handleRightTouchMove = function(event, ownerInstance) {
+  var instance = ownerInstance.selectComponent('.move-view-right');
+  var state = ownerInstance.getState();
+  var dataSet = instance.getDataset();
+  var containerLeft = dataSet.containerleft;
+  var stepWidth = dataSet.stepwidth;
+  var blockHalfWidth = dataSet.blockhalfwidth;
+  var containerWidth = dataSet.containerwidth;
+  var leftX = dataSet.leftx;
+  var toucnEnd = state.touchEnd;
+  if (toucnEnd !== true && leftX < +(containerWidth - stepWidth).toFixed(2)) {
+    if (state.id) {
+      state.id += 1;
+    } else {
+      state.id = 1;
+    }
+
+    var id = state.id;
+
+    var leftIcon = '';
+
+    var rightIcon = 'uniE955';
+
+    if (leftX === 0) {
+      leftIcon = 'uniE953';
+    } else {
+      leftIcon = 'uniE955';
+    }
+
+    var pageX = event.changedTouches[0].pageX;
+
+    pageX = ~~(pageX - containerLeft - blockHalfWidth);
+
+    pageX = Math.round(pageX / stepWidth) * stepWidth;
+
+    if (pageX >= containerWidth) {
+      rightIcon = 'uniE954';
+      pageX = containerWidth;
+    }
+
+    if (pageX - leftX <= stepWidth) {
+      rightIcon = 'uniE953';
+      pageX = leftX + stepWidth;
+
+      if (leftX === 0) {
+        leftIcon = '';
+      } else {
+        leftIcon = 'uniE954';
+      }
+    }
+
+    if (pageX < 0) {
+      rightIcon = 'uniE954';
+      pageX = 0;
+    }
+
+    pageX = +pageX.toFixed(2);
+
+    instance.setStyle({
+      transform: 'translateX(' + pageX + 'px)'
+    });
+
+    var leftInstance = ownerInstance.selectComponent('.move-view-left');
+
+    var distanceInstance = ownerInstance.selectComponent('.distance');
+
+    distanceInstance.setStyle({
+      left: leftX + 'px',
+      width: pageX - leftX + 'px'
+    });
+
+    leftInstance.removeClass('last-move');
+
+    instance.addClass('last-move');
+
+    var rightInstance = ownerInstance.selectComponent('.move-view-right');
+
+    var leftIconInstance = ownerInstance.selectComponent('.left-icon');
+
+    var rightIconInstance = ownerInstance.selectComponent('.right-icon');
+
+    rightInstance.removeClass('last-move');
+
+    instance.addClass('last-move');
+
+    leftIconInstance.removeClass('uniE953');
+
+    leftIconInstance.removeClass('uniE954');
+
+    leftIconInstance.removeClass('uniE955');
+
+    rightIconInstance.removeClass('uniE953');
+
+    rightIconInstance.removeClass('uniE954');
+
+    rightIconInstance.removeClass('uniE955');
+
+    leftIconInstance.addClass(leftIcon);
+
+    rightIconInstance.addClass(rightIcon);
+
+    ownerInstance.callMethod('handleRightTouchMove', {
+      id: id,
+      value: pageX
+    });
+  }
+
+  return false;
+};
+
+var handleLeftTouchMove = function(event, ownerInstance) {
+  var instance = ownerInstance.selectComponent('.move-view-left');
+  var state = ownerInstance.getState();
+  var dataSet = instance.getDataset();
+  var containerLeft = dataSet.containerleft;
+  var stepWidth = dataSet.stepwidth;
+  var blockHalfWidth = dataSet.blockhalfwidth;
+  var containerWidth = dataSet.containerwidth;
+  var rightX = dataSet.rightx;
+  var toucnEnd = state.touchEnd;
+  if (toucnEnd !== true && rightX > stepWidth) {
+    if (state.id) {
+      state.id += 1;
+    } else {
+      state.id = 1;
+    }
+
+    var id = state.id;
+
+    var leftIcon = 'uniE955';
+
+    var rightIcon = '';
+
+    var pageX = event.changedTouches[0].pageX;
+
+    pageX = ~~(pageX - containerLeft - blockHalfWidth);
+
+    if (rightX === containerWidth) {
+      rightIcon = 'uniE954';
+    } else {
+      rightIcon = 'uniE955';
+    }
+
+    if (pageX >= containerWidth) {
+      leftIcon = 'uniE954';
+      pageX = containerWidth;
+    }
+
+    if (rightX - pageX <= stepWidth) {
+      leftIcon = 'uniE954';
+      pageX = rightX - stepWidth;
+
+      if (rightX === containerWidth) {
+        rightIcon = '';
+      } else {
+        rightIcon = 'uniE953';
+      }
+    }
+
+    if (pageX < 0) {
+      leftIcon = 'uniE953';
+      pageX = 0;
+    }
+
+    pageX = Math.round(pageX / stepWidth) * stepWidth;
+
+    pageX = +pageX.toFixed(2);
+
+    instance.setStyle({
+      transform: 'translateX(' + pageX + 'px)'
+    });
+
+    var rightInstance = ownerInstance.selectComponent('.move-view-right');
+
+    var distanceInstance = ownerInstance.selectComponent('.distance');
+
+    distanceInstance.setStyle({
+      left: pageX + 'px',
+      width: rightX - pageX + 'px'
+    });
+
+    var leftIconInstance = ownerInstance.selectComponent('.left-icon');
+
+    var rightIconInstance = ownerInstance.selectComponent('.right-icon');
+
+    rightInstance.removeClass('last-move');
+
+    instance.addClass('last-move');
+
+    leftIconInstance.removeClass('uniE953');
+
+    leftIconInstance.removeClass('uniE954');
+
+    leftIconInstance.removeClass('uniE955');
+
+    rightIconInstance.removeClass('uniE953');
+
+    rightIconInstance.removeClass('uniE954');
+
+    rightIconInstance.removeClass('uniE955');
+
+    leftIconInstance.addClass(leftIcon);
+
+    rightIconInstance.addClass(rightIcon);
+
+    ownerInstance.callMethod('handleLeftTouchMove', {
+      id: id,
+      value: pageX
+    });
+  }
+
+  return false;
+};
+
+var handleTouchEnd = function(event, ownerInstance) {
+  var state = ownerInstance.getState();
+  state.touchEnd = true;
+  ownerInstance.callMethod('handleTouchEnd');
+};
+
+var styleChange = function(newValue, oldValue, ownerInstance, instance) {
+  if (newValue) {
+    instance.setStyle(newValue);
+  }
+};
+
+module.exports = {
+  handleLeftTouchStart: handleLeftTouchStart,
+  handleLeftTouchMove: handleLeftTouchMove,
+  handleTouchEnd: handleTouchEnd,
+  handleRightTouchMove: handleRightTouchMove,
+  handleRightTouchStart: handleRightTouchStart,
+  styleChange: styleChange
+};

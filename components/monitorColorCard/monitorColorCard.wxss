@@ -1,0 +1,364 @@
+@import '../../assets/styles/flex.wxss';
+@import '../../assets/styles/font.wxss';
+
+.monitor_card {
+  position: relative;
+  width: 100%;
+  height: 312rpx;
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.area {
+  width: calc(100% - 67px);
+  height: 312rpx;
+}
+
+.wrapper {
+  width: calc(100vw - 16rpx);
+  height: 312rpx;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.carIcon {
+  width: 80rpx;
+  height: 80rpx;
+  background-color: #fff;
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.17);
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 12rpx;
+  position: relative;
+  top: 12rpx;
+}
+.carIcon1{
+  padding: 10rpx;
+  box-sizing: border-box;
+}
+.allCarlogo{
+  width: 100%;
+  height: 100%;
+}
+.red_bg {
+  width: 100%;
+  height: 312rpx;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url('https://piaodingding.oss-cn-hangzhou.aliyuncs.com/images/wechat/cdd/monitor_red_card.png');
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.dred_bg {
+  position: absolute;
+  top: 8rpx;
+  left: 8rpx;
+  right: 16rpx;
+  bottom: 16rpx;
+  border-radius: 16rpx;
+  background-color: #eb755f;
+}
+
+.green_bg {
+  width: 100%;
+  height: 312rpx;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url('https://piaodingding.oss-cn-hangzhou.aliyuncs.com/images/wechat/cdd/monitor_green_card.png');
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.dgreen_bg {
+  position: absolute;
+  top: 8rpx;
+  left: 8rpx;
+  right: 16rpx;
+  bottom: 16rpx;
+  border-radius: 16rpx;
+}
+
+.monitor_card .card_content {
+  position: relative;
+  z-index: 3;
+}
+
+.monitor_card .card_message {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 18rpx 0 44rpx;
+}
+
+.monitor_card .card_date {
+  width: 140rpx;
+  font-size: 28rpx;
+}
+
+.monitor_card .card_address {
+  width: 280rpx;
+  font-size: 50rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.monitor_long_card .card_address {
+  width: 480rpx;
+}
+
+.monitor_card .card_address .text {
+  max-width: 208rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-right: 16rpx;
+}
+.text_blue{
+  text-shadow:0 2rpx 6rpx rgba(0,37,183,0.8);
+}
+.text_red{
+  text-shadow:0 2rpx 6rpx rgba(219,39,39,1)
+}
+.monitor_card .card_address .city_text {
+  width: 124rpx;
+}
+
+.monitor_card .card_address .city_type {
+  width: 304rpx;
+  height: 80rpx;
+  overflow: hidden;
+  line-height: 66rpx;
+}
+
+.monitor_card .card_address .type {
+  font-size: 24rpx;
+  border: 1px solid #fff;
+  padding: 0 14rpx;
+  margin-right: 10rpx;
+  border-radius: 22rpx;
+  margin-top: 10rpx;
+  display: inline-block;
+  height: 44rpx;
+  line-height: 44rpx;
+}
+
+.monitor_card .card_budget {
+  width: auto;
+}
+.card_budget{
+  display: flex;
+  height: 80rpx;
+  align-items: baseline;
+  box-sizing: border-box;
+  padding-top: 10rpx;
+}
+.card_money{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: baseline;
+  max-width: 200rpx;
+  height: 80rpx;
+  font-size: 26rpx;
+  text-align: right;
+  margin-right: 20rpx;
+}
+.card_search{
+  box-sizing: border-box;
+  padding-top: 20rpx;
+}
+.card_budget .card_money .money {
+  font-size: 50rpx;
+}
+
+.card_search .card_money .money {
+  font-size: 40rpx;
+}
+
+.past_card .card_money .money {
+  font-size: rpx;
+}
+
+.monitor_card .card_money .money {
+  max-width: 160rpx;
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: keep-all;
+  text-shadow:0 2rpx 6rpx rgba(24,0,183,0.58);
+}
+
+.monitor_red_card .card_money .money {
+  text-shadow:0 2rpx 6rpx rgba(219,39,39,1);
+}
+
+.card_budget .card_down_money {
+  margin-top: -12rpx;
+}
+
+.past_card .card_down_money, .card_search .card_down_money {
+  margin-top: 0;
+}
+.monitor_card .card_total {
+  width: 95%;
+  height: 80rpx;
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+  box-sizing: border-box;
+  padding-left: 142rpx;
+  flex-direction: column;
+  margin-top: -6rpx;
+}
+.card_price{
+  display: flex;
+  justify-content: flex-end;
+}
+.monitor_card .card_total .location {
+  width: 100%;
+}
+
+.monitor_card .card_total view {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.monitor_card .card_line {
+  padding: 0 44rpx;
+}
+
+.monitor_card .card_line .line {
+  width: 100%;
+  height: 1rpx;
+  background: #fff;
+  margin-top: 20rpx;
+}
+
+.card_time .romm_num {
+  font-weight: bold;
+}
+
+.monitor_card .card_time {
+  height: 110rpx;
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  padding-left: 44rpx;
+  position: relative;
+  margin-top: 2%;
+}
+
+.card_time .detail_btn {
+  width: 192rpx;
+  height: 64rpx;
+  color: #0048fe;
+  box-shadow: 0px 1px 3px 0px rgba(36, 45, 255, 0.88);
+  text-align: center;
+  background: #fff;
+  display: inline-block;
+  line-height: 64rpx;
+  border-radius: 32rpx;
+  position: absolute;
+  top: 50%;
+  margin-top: -32rpx;
+  right: 30rpx;
+}
+
+.monitor_red_card .card_time .detail_btn {
+  color: #da4e3a;
+}
+
+.card_time .time_monitor {
+  width: 44rpx;
+  height: 44rpx;
+  position: absolute;
+  top: 50%;
+  margin-top: -22rpx;
+  animation: headRotate 1s linear infinite;
+}
+
+@keyframes headRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.card_time .time_text {
+  padding-left: 50rpx;
+}
+
+.card_time .time_text text {
+  margin-right: 4rpx;
+}
+
+.card_time .time_text .pay_money {
+  background: #d6d6d6;
+  height: 44rpx;
+  display: inline-block;
+  text-align: center;
+  line-height: 44rpx;
+  border-radius: 4rpx;
+  padding: 0 14rpx;
+}
+
+.remove {
+  width: 67px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.remove image {
+  width: 42rpx;
+  height: 44rpx;
+}
+
+.middel {
+  font-size: 32rpx;
+  margin-top: 10rpx;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+}
+.cityName{
+  max-width: 100rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.uniE96D {
+  width: 32rpx;
+  height: 32rpx;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 6rpx;
+  color: #fff !important;
+}
+
+.red_button {
+  color: #da4e3a !important;
+  box-shadow: 0px 1px 3px 0px rgba(226, 54, 54, 1) !important;
+}

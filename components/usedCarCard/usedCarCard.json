@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "imageExtend": "../../components/imageExtend/imageExtend",
+    "gzTip": "../../components/followDialog/followDialog"
+  }
+}

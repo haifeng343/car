@@ -1,0 +1,54 @@
+<view class="mask" catchtouchmove="true" hidden="{{!showDialog}}">
+  <view class="fixed-dialog">
+    <view class="dialog-title">
+      <text class="dialog-heng">——</text>
+      <text class="title1">车源充足</text>
+      <text class="dialog-heng">——</text>
+    </view>
+    <view class="dialog-text">符合条件的车源过多,无法添加监控 您可以重新查询,也可以直接前往各平台 查看具体车源。</view>
+    <view class="dialog-content">
+      <view class="dialog-guazi">
+        <view class="dialog-body">
+          <view>
+            <text class="dialog-carTitle">瓜子</text>
+            <image src="../../assets/image/arrow_two.png" class="arrow"></image>
+          </view>
+          <view>
+            <text class="jiao"></text>--------
+            <text class="jiao"></text>
+          </view>
+          <view class="dialog-number">256辆</view>
+        </view>
+      </view>
+      <view class="dialog-right">
+        <view class="dialog-youxin">
+          <view class="dialog-body">
+            <view>
+              <text class="dialog-carTitle">优信</text>
+              <image src="../../assets/image/arrow_two.png" class="arrow"></image>
+            </view>
+            <view class="heng">
+              <text class="jiao"></text>--------
+              <text class="jiao"></text>
+            </view>
+            <view class="dialog-number">256辆</view>
+          </view>
+        </view>
+        <view class="dialog-renren">
+          <view class="dialog-body noNumber">
+            <view>
+              <text class="dialog-carTitle">人人</text>
+              <image src="../../assets/image/arrow_two.png" class="arrow"></image>
+            </view>
+            <view class="heng">
+              <text class="jiao"></text>--------
+              <text class="jiao"></text>
+            </view>
+            <view class="dialog-number">256辆</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="dialog-button" bindtap="closeDialog">知道了</view>
+  </view>
+</view>

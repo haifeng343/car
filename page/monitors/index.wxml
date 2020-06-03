@@ -1,0 +1,25 @@
+<view class="section {{show===0||show===2?'section_empty':''}}">
+  <view wx:if="{{show===1}}" class="card_list">
+    <block wx:for="{{data}}" wx:key="id">
+      <monitorColorCard wx:if="{{item.status == 1}}" item="{{item}}" ddCoin="{{ddCoin}}" bind:checkEvent="checkDetail" bind:clickDelete="delItem" bind:clickOpen="openTask"></monitorColorCard>
+      <monitorGrayCard wx:else item="{{item}}" ddCoin="{{ddCoin}}" bind:clickEvent="goToClick" bind:clickDelete="delItem" bind:clickOpen="openTask" bind:clickRecharge="recharge"></monitorGrayCard>
+    </block>
+  </view>
+  <view class="tip-wrapper " wx:if="{{show===1 && data.length > 0}}">
+    <text class="icon-font uniE915" />
+    <text>左滑结束监控</text>
+  </view>
+  <view wx:if="{{show===0}}" class="search_no-data">
+    <image class="search_no-data_img"src="https://piaodingding.oss-cn-hangzhou.aliyuncs.com/images/wechat/cdd/nodata.png"></image>
+    <view class="search_no-data_text">
+      <view bindtap="handleGoToRule">查看详细监控规则 >></view>
+    </view>
+  </view>
+
+  <monitorStopDialog deleteItem="{{deleteItem}}" bind:monitorStopEvent="getmonitorStopEvent" bind:monitorConfirmEvent="getmonitorConfirmEvent" style="display:{{monitorStopDisplay}}"></monitorStopDialog>
+
+  <monitorEndDialog text="确认要结束当前任务" bind:monitorEndEvent="getmonitorEndEvent" bind:monitorEndConfirmEvent="getmonitorEndConfirmEvent" style="display:{{monitorEndDisplay}}"></monitorEndDialog>
+
+  <monitorStartDialog bind:monitorStartEvent="getmonitorStartEvent" bind:monitorStartConfirmEvent="getmonitorStartConfirmEvent" style="display:{{monitorStartDisplay}}"></monitorStartDialog>
+
+</view>

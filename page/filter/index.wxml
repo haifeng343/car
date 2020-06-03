@@ -1,0 +1,48 @@
+<wxs src="../../utils/tools.wxs" module="tools" />
+<view class="left-panel">
+  <scroll-view scroll-y class="index-list">
+    <view class="index-item {{item.active ? 'active' : ''}}" wx:for="{{indexList}}" wx:key="value" bindtap="handleGotoView" data-value="{{item.value}}">
+      {{item.label}}
+    </view>
+    <view style="height: 120rpx"></view>
+  </scroll-view>
+</view>
+<scroll-view scroll-y scroll-into-view="{{currentView}}" class="right-panel">
+  <view class="filter-list">
+    <view class="filter-item" wx:for="{{map}}" id="{{item.id}}" wx:key="id">
+      <view class="filter-title">
+        <image class="title_icon_img" src="../../assets/image/icon_list.png" />
+        <text>{{item.title}}</text>
+        <text class="unit" wx:if="{{item.unit}}">({{item.unit}})</text>
+        <text class="tag" wx:if="{{item.type === 3}}">
+          {{tools.showText(searchData[item.field[0]], searchData[item.field[1]], item.max, item.title)}}
+        </text>
+      </view>
+      <view class="option-list option-type-{{item.type}}">
+        <block wx:if="{{item.type === 1 || item.type === 4}}">
+          <view class="option-item {{item2.active ? 'active' : ''}}" wx:for="{{item.optionList}}" wx:for-item="item2" wx:key="value" bindtap="handleSelectFilter" data-value="{{item2.value}}" data-field="{{item.field}}">
+            <view wx:if="{{item2.color}}" class="icon" style="background: {{item2.color}}"></view>{{item2.label}}
+          </view>
+        </block>
+        <block wx:if="{{item.type === 2}}">
+          <view class="option-item {{item2.active ? 'active' : ''}}" wx:for="{{item.optionList}}" wx:for-item="item2" wx:key="value" bindtap="handleSelectFilter" data-value="{{item2.value}}" data-field="{{item.field}}">
+            <view class="icon" wx:if="{{item2.icon}}">
+              <image src="{{item2.icon}}" />
+            </view>
+            <view class="name">{{item2.label}}</view>
+          </view>
+        </block>
+        <block wx:if="{{item.type === 3}}">
+          <view class="range-wrapper">
+            <Range tick="{{item.tick}}" minStep="{{item.min}}" maxStep="{{item.max}}" step="{{item.step}}" min="{{searchData[item.field[0]]}}" max="{{searchData[item.field[1]]}}" bind:onChange="handleRangeChange" data-field="{{item.field}}" data-step="{{item.step}}" />
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <view style="height: 160rpx"></view>
+</scroll-view>
+<view class="button-wrapper">
+  <view class="button reset-button" bindtap="handleResetToDefault">重置</view>
+  <view class="button submit-button" bindtap="handleSubmit">查询</view>
+</view>

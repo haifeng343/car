@@ -1,0 +1,51 @@
+<scroll-view scroll-y scroll-into-view="{{currentView}}" bindscroll="handlePageScroll" class="page {{isLoaded ? '' : 'hidden'}}">
+  <view class="line"></view>
+  <view class="hot-view" id="top">
+    <view class="hot-title">
+      <image class="title_icon_img" src="../../assets/image/icon_list.png"></image>
+      <text>热门品牌</text>
+    </view>
+    <view class="hot-list">
+      <view class="hot-item" wx:for="{{hotList}}" wx:key="id" bindtap="handleSelectBrand" data-item="{{item}}">
+        <view class="hot-logo">
+          <image class="title_icon_img" src="{{item.icon}}"></image>
+        </view>
+        <view class="hot-name">{{item.name}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="block"></view>
+  <view class="all-brand" bindtap="handleSelectAllBrand">不限品牌</view>
+  <view class="brand-pinyin-list">
+    <view wx:for="{{brandList}}" wx:key="pinyin" class="brand-pinyin-item" id="{{item.pinyin}}">
+      <view class="brand-pinyin-title">{{item.pinyin}}</view>
+      <view class="brand-list">
+        <view class="brand-item {{currentBrand && currentBrand.id === item2.id ? 'active' : ''}}" id="brandId-{{item2.id}}" wx:for="{{item.brandList}}" wx:key="id" wx:for-item="item2" bindtap="handleSelectBrand" data-item="{{item2}}">
+          <view class="brand-logo">
+            <image class="brand-logo-image" src="{{item2.icon}}"></image>
+          </view>
+          <view class="brand-name">{{item2.name}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<view class="right-panel {{showSeries ? '' : 'hidden'}}">
+  <view class="brand-info">
+    <view class="brand-info-icon">
+      <image class="brand-logo-image" src="{{currentBrand.icon}}"></image>
+    </view>
+    <view class="brand-info-name">{{currentBrand.name}}</view>
+  </view>
+  <view class="right-panel-block"></view>
+  <view class="series-list">
+    <view wx:if="{{seriesList.length}}" class="series-item series-item-absolute {{currentSeries && currentSeries.id === seriesList[0].id ? 'active' : ''}}" id="seriesId-{{seriesList[0].id}}" data-item="{{seriesList[0]}}" bindtap="handleSelectSeries">{{seriesList[0].name}}</view>
+    <scroll-view scroll-y scroll-into-view="{{currentSeriesView}}" class="series-back">
+      <view class="series-item {{currentSeries && currentSeries.id === item.id ? 'active' : ''}}" id="seriesId-{{item.id}}" wx:for="{{seriesList}}" wx:key="name" data-item="{{item}}" bindtap="handleSelectSeries" wx:if="{{item.id !== 0}}">{{item.name}}</view>
+    </scroll-view>
+  </view>
+</view>
+<view class="index-list">
+  <view class="index-item" wx:for="{{indexList}}" wx:key="value" bindtap="handleGotoView" data-value="{{item.value}}">{{item.label}}</view>
+</view>
+<Loading wx:if="{{isLoaded === false}}"/>

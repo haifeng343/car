@@ -1,0 +1,29 @@
+.house_loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+}
+.house_loading .loading_image{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 600rpx;
+  height: 100%;
+  z-index: 999;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.house_loading .image {
+  margin-top: -160rpx;
+  width: 450rpx;
+  height: 174rpx;
+}
+.house_loading .text{text-align:center;font-size: 28rpx;margin-top: 20rpx;}

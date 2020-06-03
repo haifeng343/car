@@ -1,0 +1,72 @@
+{
+  "pages": [
+    "page/home/index",
+    "page/monitors/index",
+    "page/mine/index",
+    "page/citySelect/citySelect",
+    "page/customer/index",
+    "page/public/public",
+    "page/feedback/index",
+    "page/fund/fund",
+    "page/coupon/coupon",
+    "page/monitorhistory/monitorhistory",
+    "page/deposit/deposit",
+    "page/statistics/statistics",
+    "page/bindPhone/bindPhone",
+    "page/usedCarList/usedCarList",
+    "page/monitorCarList/monitorCarList",
+    "page/monitorRule/index",
+    "page/citySearch/citySearch",
+    "page/userfeedback/index",
+    "page/funddetail/index",
+    "page/brandSelect/index",
+    "page/test/index",
+    "page/filter/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wx2f40778ca2a8c6b0",
+    "wx2d80f009df8d7aaa",
+    "wx66d9d754ae654ee0",
+    "wx11970e278167bf3b"
+  ],
+  "style": "v2",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "networkTimeout": {
+    "request": 10000
+  },
+  "tabBar": {
+    "color": "#BEC3CD",
+    "selectedColor": "#0050FE",
+    "list": [
+      {
+        "pagePath": "page/home/index",
+        "text": "查询",
+        "iconPath": "./assets/image/home.png",
+        "selectedIconPath": "./assets/image/home_selected.png"
+      },
+      {
+        "pagePath": "page/monitors/index",
+        "text": "监控",
+        "iconPath": "./assets/image/monitors.png",
+        "selectedIconPath": "./assets/image/monitors_selected.png"
+      },
+      {
+        "pagePath": "page/mine/index",
+        "text": "个人中心",
+        "iconPath": "./assets/image/mine.png",
+        "selectedIconPath": "./assets/image/mine_selected.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

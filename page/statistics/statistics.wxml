@@ -1,0 +1,131 @@
+<wxs src="../../utils/tools.wxs" module="filter" />
+<view>
+  <view class="section {{bottomType === 0&&allCount>=50?'section_bottom':''}}">
+    <view>
+      <view class="statistics_query">
+        <view class="house_query">
+          <image class="query" src="../../assets/image/house_query.png"></image>
+          <text>查询统计</text>
+        </view>
+        <view class="house_data">
+          <view class="data_first">
+            <view class="data_layout data_real">
+              <view>实际车源/辆</view>
+              <view class="real_num">{{allCount}}</view>
+            </view>
+            <view class="data_layout data_average">
+              <view>平均总价/万</view>
+              <view class="average_price">{{filter.lowPricefun(averagePrice)}}</view>
+            </view>
+          </view>
+          <view class="data_sencond">
+            <view class="data_layout data_total">
+              <view>当前展示/辆</view>
+              <view class="total_num">{{showCount}}</view>
+            </view>
+            <view class="data_layout data_low">
+              <view wx:if="{{sortType==1}}">最低总价/万</view>
+              <view wx:else>推荐总价/万</view>
+              <view class="low_price">{{filter.lowPricefun(lowPrice)}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="house_low_price">
+        <view class="house_low">
+            <image class="price" src="../../assets/image/low_price.png"></image>
+            <text>总价最低</text>
+        </view>
+        <usedCarCard item="{{lowPriceData}}" cardType="{{cardType}}"></usedCarCard>
+      </view>
+      <view class="house_low_price">
+        <view class="house_low">
+            <image class="price" src="../../assets/image/low_price.png"></image>
+            <text>首付最低</text>
+        </view>
+        <usedCarCard item="{{firstlowPriceData}}" cardType="{{cardType}}"></usedCarCard>
+      </view>
+      <view class="line"></view>
+      <view class="statistics_detail">
+        <view class="house_stat">
+          <text>统计详情</text>
+        </view>
+        <view class="stat_card">
+          <view class="stat_first {{enoughList.length == 3?'stat_three':''}}  {{enoughList.length == 1?'stat_one':''}}">
+            <block wx:for="{{enoughList}}" wx:key="index">
+              <view wx:if="{{item.value>0}}" class="stat_layout {{enoughList.length == 3&&index ==0?'stat_normal':'stat_other'}} {{enoughList.length == 3&&index ==2?'stat_ab':''}}" bindtap="navigateToPlatform" data-platform="{{item.key}}">
+                <view class="tip {{item.key =='gz'?'tip1':''}} {{item.key =='rr'?'tip2':''}} {{item.key =='yx'?'tip3':''}}">{{item.name}}</view>
+                <view class="stat_tip">
+                  <view class="price"><text wx:if="{{ sortType!=1 }}">推荐价:{{item.priceText||'--万'}}</text><text wx:if="{{sortType==1}}">最低总价:{{item.priceText||'--万'}}</text></view>
+                  <view class="num">车源数:{{item.value}}辆(已选{{item.selectCount?item.selectCount:0}}辆)</view>
+                </view>
+                <image class="tu_image" mode="aspectFill" wx:if="{{item.key =='gz'}}" src="https://piaodingding.oss-cn-hangzhou.aliyuncs.com/images/wechat/cdd/default_car2_image.png"></image>
+                <image class="tu_image" mode="aspectFill" wx:if="{{item.key =='rr'}}" src="https://piaodingding.oss-cn-hangzhou.aliyuncs.com/images/wechat/cdd/default_car3_image.png"></image>
+                <image class="tu_image" mode="aspectFill" wx:if="{{item.key =='yx'}}" src="https://piaodingding.oss-cn-hangzhou.aliyuncs.com/images/wechat/cdd/default_car1_image.png"></image>
+              </view>
+
+              <view wx:else class="stat_layout {{enoughList.length == 3&&index ==0?'stat_normal':'stat_other'}} {{enoughList.length == 3&&index ==2?'stat_ab':''}}" bindtap="navigateToPlatform" data-platform="{{item.key}}">
+                <view class="gz" wx:if="{{item.key =='gz'}}">
+                  <image class="tu_image" mode="aspectFill"  src="https://piaodingding.oss-cn-hangzhou.aliyuncs.com/images/wechat/cdd/car_placeholder_img2.png"></image>
+                  <image mode="aspectFill" src="../../assets/image/gz_logo.png" class="gz_logo"></image>
+                <text class="no_text">暂无数据</text>
+                </view>
+                <view class="gz" wx:if="{{item.key =='rr'}}">
+                  <image class="tu_image" mode="aspectFill"  src="https://piaodingding.oss-cn-hangzhou.aliyuncs.com/images/wechat/cdd/car_placeholder_img3.png"></image>
+                  <image mode="aspectFill" src="../../assets/image/rr_logo.png" class="rr_logo"></image>
+                <text class="no_text">暂无数据</text>
+                </view>
+                <view class="gz" wx:if="{{item.key =='yx'}}">
+                <image class="tu_image" mode="aspectFill"  src="https://piaodingding.oss-cn-hangzhou.aliyuncs.com/images/wechat/cdd/car_placeholder_img1.png"></image>
+                  <image mode="aspectFill" src="../../assets/image/yx_logo.png" class="yx_logo"></image>
+                <text class="no_text">暂无数据</text>
+                </view>
+              </view>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+ 
+ <!-- 底部监控组件 -->
+ <monitorBottom 
+ bind:stopMonitorEvent="stopMonitor" 
+ bind:goBackEvent="goBackEvent"
+ bind:goSaveEvent="goSave"
+ bind:startMonitor="startMonitor"
+ bind:selectAllEvent="selectAllEvent"
+ bind:deleteBatchEvent="deleteBatchEvent"
+ bottomType="{{bottomType}}" 
+ taskTime="{{taskTime}}" 
+ fee="{{fee}}"
+ ddCoin="{{ddCoin}}"
+ totalFee="{{totalFee}}">
+ </monitorBottom>
+
+</view>
+
+<stopDialog 
+    bind:stopCancelEvent="stopCancelEvent" 
+    bind:stopConfrimEvent="getstopConfirmEventEvent" 
+    startTimeName="{{startTimeName}}"
+    taskTime="{{taskTime}}"
+    fee="{{fee}}"
+    totalFee="{{totalFee}}"
+    style="display:{{stopDisplay}}">
+</stopDialog>
+
+
+<monitorDialog title="{{monitorTitle}}" fee="{{fee}}" ddCoin="{{ddCoin}}" bindPublic="{{bindPublic}}" bind:monitorPublicEvent="getMonitorPublicEvent" bind:monitorEvent="getMonitorEvent" bind:monitorConfirmEvent="getmonitorConfirmEvent"  style="display:{{monitorShow}}"></monitorDialog>
+
+<publicDialog style="display:{{publicDisplay}}" bind:publicEvent="getPublicEvent" bind:publicConfrimEvent="getPublicConfrimEvent"></publicDialog>
+
+<updateDialog 
+  updateData="{{updateData}}" 
+  defalutData="{{defalutData}}" 
+  style="display:{{updateMonitorDisplay}}"
+  bind:updateCancelEvent="getUpdateCancelEvent" 
+  bind:updateConfrimEvent="getUpdateConfrimEvent" >
+</updateDialog>
+
+<monitorEnoughDialog dialogTitle="{{dialogTitle}}" dialogText="{{dialogText}}" dialogBtn="{{dialogBtn}}" enoughType="{{cardType}}" style="display:{{monitorenoughDisplay}}" list="{{enoughList}}" bind:enoughEvent="getEnoughEvent" ></monitorEnoughDialog>

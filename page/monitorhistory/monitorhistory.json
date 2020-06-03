@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "nodata": "../../components/Nodata/Nodata",
+    "MonitorCard": "../../components/MonitorCard/index",
+    "monitorEndDialog": "../../components/monitorEndDialog/monitorEndDialog",
+    "imageExtend": "../../components/imageExtend/imageExtend"
+  },
+  "navigationBarTitleText": "历史监控"
+}

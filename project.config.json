@@ -1,0 +1,132 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.9.4",
+	"projectname": "usedCarSmallProject",
+	"setting": {
+		"urlCheck": true,
+		"es6": false,
+		"enhance": true,
+		"postcss": false,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
+	},
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"appid": "wxefa4a10006fdbc8f",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "mine",
+					"pathName": "page/mine/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "page/statistics/statistics",
+					"pathName": "page/statistics/statistics",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "page/monitors/index",
+					"pathName": "page/monitors/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "page/fund/fund",
+					"pathName": "page/fund/fund",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "page/coupon/coupon",
+					"pathName": "page/coupon/coupon",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "page/monitorhistory/monitorhistory",
+					"pathName": "page/monitorhistory/monitorhistory",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "page/monitors/index",
+					"pathName": "page/monitors/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "page/monitorRule/index",
+					"pathName": "page/monitorRule/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "品牌选择",
+					"pathName": "page/brandSelect/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "筛选",
+					"pathName": "page/filter/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "测试页面(方便调试组件样式)",
+					"pathName": "page/test/index",
+					"scene": null
+				}
+			]
+		}
+	}
+}

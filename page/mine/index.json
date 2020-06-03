@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "menuItem": "../../components/MenuItem/MenuItem",
+    "authDialog": "../../components/AuthDialog/AuthDialog",
+    "ShareCard": "../../components/ShareCard/index",
+    "CouponDialog": "../../components/CouponDialog/index",
+    "imageExtend": "../../components/imageExtend/imageExtend"
+  },
+  "navigationBarTitleText": "个人中心",
+  "navigationBarBackgroundColor": "#0050FE",
+  "navigationBarTextStyle": "white",
+  "disableScroll": true
+}

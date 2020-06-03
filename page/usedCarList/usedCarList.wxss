@@ -1,0 +1,27 @@
+.header {
+  transition: transform 0.5s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 33;
+  background-color: #fff;
+}
+.block {height: 200rpx;}
+.card_list {overflow: hidden;position: relative;padding-bottom: 180rpx;}
+/* .card_list .car_card{margin-bottom: 30rpx;} */
+.section_empty {display: flex;flex-direction: column;height: calc(100% - 200rpx) !important;padding-bottom: 0;}
+.no_more_data {
+  width:100%;
+  text-align: center;
+  color:#A6A6A6;
+  font-size: 24rpx;
+  margin-top: 26rpx;
+}
+.no_more_data .rules_txt{
+  color: #0050FE;
+  font-size: 24rpx;
+  padding-bottom: 1rpx;
+  border-bottom: 1rpx solid #0050FE;
+}
+.dot_load{margin-top: 26rpx;}

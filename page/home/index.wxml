@@ -1,0 +1,126 @@
+<wxs src="../../utils/tools.wxs" module="filter" />
+<view class="section">
+  <swiper class='banner' indicator-dots="false" autoplay="false" circular='true' indicator-dots='true' interval='4000' duration='1000'>
+    <block wx:for="{{imgUrls}}" wx:for-item="item" wx:key='id'>
+      <swiper-item>
+        <imageExtend src='{{item.imagePath}}' defaultImage="../../assets/image/banner.png" defaultNoneImage="../../assets/image/banner.png" defaultTime="{{2000}}"/>
+        <!-- <image src='{{item.imagePath}}' mode="aspectFill" class='banner-image' /> -->
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class='content'>
+    <view class='search-box'>
+      <view class="search-content">
+        <scroll-view scroll-y class="search-content-main" bindtouchstart="bindTouchStart" bindtouchend="bindTouchEnd">
+          <view class='search_item city' bindtap='goCitySelect'>
+            <view class='position'>{{searchData.city}}</view>
+            <view class='positionByHand' catchtap='handleRepos'>
+              <text>{{cityText}}</text>
+              <image class="icon_img" src="../../assets/image/icon_area.png"></image>
+            </view>
+          </view>
+          <view class='search_item'>
+            <view class="scenic {{searchData.area === ''?'':'active'}}" bindtap='goBrandSelect'>
+              <view class="scenic-text" wx:if="{{searchData.brandName}}">
+                  <view class="logo_img">
+                      <imageExtend src='{{searchData.brandId.icon}}' defaultImage="../../assets/image/icon_logo.png" defaultNoneImage="../../assets/image/icon_logo.png" mode="aspectFit" defaultTime="{{30}}"/>
+                  </view>
+                  <!--<image class="logo_img" mode="aspectFit" wx:if="{{searchData.brandId.icon}}" src="{{searchData.brandId.icon}}"></image>-->
+                  <text class="text">{{ searchData.brandName}}{{searchData.seriesName?(' - '+searchData.seriesName):'' }}</text>
+              </view>
+              <view class="scenic-text hidden" wx:else>不限品牌/车系</view>
+              <text class="icon-font {{searchData.brandName? 'uniE901' : 'uniE90C'}}" catchtap="handleClearBrand" />
+            </view>
+          </view>
+          <view class='search_item noBorder'>
+            <view class='title'>
+              <image class="title_icon_img" src="../../assets/image/icon_list.png"></image>
+              <view>价格<text class="unit">(万)</text></view>
+            </view>
+            <view class='tag'>{{filter.showText(searchData.minPrice, searchData.maxPrice, 50, '价格')}}</view>
+            <view class="range_back">
+              <Range min="{{searchData.minPrice}}" max="{{searchData.maxPrice}}" minStep="{{0}}" maxStep="{{50}}" step="{{1}}" tick="{{['0', '10', '20', '30', '40', '不限']}}" bind:onChange="handlePriceChange" />
+            </view>
+          </view>
+          <view wx:if="{{spread}}">
+            <view class='search_item noBorder'>
+              <view class='title'>
+                <image class="title_icon_img" src="../../assets/image/icon_list.png"></image>
+                <view>车型</view>
+              </view>
+              <view class="item_view_back">
+                <view class="item_view {{searchData.autoType == index?'active':''}}" wx:for-index="index" bindtap='selectType' data-index='{{index}}' data-type="autoType" wx:key='*this' wx:for='{{autoTypeMap}}'>{{item}}</view>
+              </view>
+            </view>
+            <view class='search_item noBorder'>
+              <view class='title'>
+                <image class="title_icon_img" src="../../assets/image/icon_list.png"></image>
+                <view>车龄<text class="unit">(年)</text></view>
+              </view>
+              <view class='tag'>{{filter.showText(searchData.minAge, searchData.maxAge, 6, '车龄')}}</view>
+              <view class="range_back">
+                <Range min="{{searchData.minAge}}" max="{{searchData.maxAge}}" minStep="{{0}}" maxStep="{{6}}" step="{{1}}" tick="{{['0', '1', '2', '3', '4', '5', '不限']}}" bind:onChange="handleAgeChange" />
+              </view>
+            </view>
+            <view class='search_item noBorder'>
+              <view class='title'>
+                <image class="title_icon_img" src="../../assets/image/icon_list.png"></image>
+                <view>里程<text class="unit">(万公里)</text></view>
+              </view>
+              <view class='tag'>{{filter.showText(searchData.minMileage, searchData.maxMileage, 14, '里程')}}</view>
+              <view class="range_back">
+                <Range min="{{searchData.minMileage}}" max="{{searchData.maxMileage}}" minStep="{{0}}" maxStep="{{14}}" step="{{1}}" tick="{{['0', '2', '4', '6', '8', '10','12', '不限']}}" bind:onChange="handleMileageChange" />
+              </view>
+            </view>
+            <view class='search_item noBorder'>
+              <view class='title'>
+                <image class="title_icon_img" src="../../assets/image/icon_list.png"></image>
+                <view>亮点</view>
+              </view>
+              <view class="item_view_back">
+                <view class="item_view {{filter.checkType(searchData.starConfig,index)?'active':''}}" wx:for-index="index" bindtap='selectStarConfig' data-index='{{index}}' wx:key='*this' wx:for='{{starConfigMap}}'>{{item}}</view>
+              </view>
+            </view>
+            <view class='search_item noBorder'>
+              <view class='title' bindtap="handleShowTipDialog">
+                <image class="title_icon_img" src="../../assets/image/icon_list.png"></image>
+                <view>车源偏好</view>
+                <text class="icon-font uniE92D" style="margin-left:10rpx;color:#0050FE"></text>
+              </view>
+              <view class="item_view_back">
+                <view class="item_view {{searchData.sortType == index?'active':''}}" wx:for-index="index" bindtap='selectType' data-index='{{index}}' data-type="sortType" wx:key='*this' wx:for='{{sortTypeMap}}'>{{item}}</view>
+              </view>
+            </view>
+          </view>
+          <view class='search_item_spread' bindtap='slideOption'>
+            {{spread?"收起":"展开更多"}}
+            <view class='icon-font uniE92{{spread?"5":"6"}}'></view>
+          </view>
+        </scroll-view>
+      </view>
+      <view class='search-btn-back'>
+        <view class='search-btn' bindtap='searchSubmit'>查询</view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{showTipDialog}}" class="tipDialog">
+    <view class="dialog-overlay" bindtap="handleCloseTipDialog"></view>
+    <view class="dialog-container">
+      <view class="dialog-title">
+        <text>车源偏好说明</text>
+      </view>
+      <view class="dialog-content">
+        <text class="title">价格最低：按总价从低到高顺序获取车源</text>
+        <text class="title">里程最少：按里程从少到多顺序获取车源</text>
+        <text class="title">车龄最小：按车龄从小到大顺序获取车源</text>
+      </view>
+      <view class="dialog-button">
+        <view class="button" bindtap="handleCloseTipDialog">知道了</view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{showAuthDialog}}">
+    <AuthDialog bind:onConfirm="handleGetUserInfo" bind:onCancel="handleCloseAuthDialog" />
+  </view>
+    <CouponDialog wx:if="{{showCouponDialog}}" couponList="{{couponList}}" title="被优惠券砸中啦" bind:onClose="handleCloseCouponDialog" />
+</view>

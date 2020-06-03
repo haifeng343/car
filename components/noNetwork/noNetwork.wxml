@@ -1,0 +1,4 @@
+<view class="container">
+  <image class="image" src="../../assets/image/no_network.png"></image>
+  <view class="title">{{title}}</view>
+</view>

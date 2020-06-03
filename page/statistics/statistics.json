@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "stopDialog": "../../components/stopDialog/stopDialog",
+    "monitorBottom":"../../components/monitorBottom/monitorBottom",
+    "monitorDialog": "../../components/monitorDialog/monitorDialog",
+    "publicDialog": "../../components/publicDialog/publicDialog",
+    "updateDialog": "../../components/updateDialog/updateDialog",
+    "monitorEnoughDialog": "../../components/monitorEnoughDialog/monitorEnoughDialog",
+    "usedCarCard": "../../components/usedCarCard/usedCarCard"
+  },
+  "navigationBarTitleText": "统计信息"
+}

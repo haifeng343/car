@@ -1,0 +1,4 @@
+<view class="container">
+    <image src="../../assets/image/nodata.png" />
+    <view class="desc">{{message}}</view>
+</view>

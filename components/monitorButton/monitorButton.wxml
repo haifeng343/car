@@ -1,0 +1,10 @@
+<view class="monitor" wx:if="{{buttonType === 1}}">
+  <button class="monitor_btn" bindtap='startMonitor' wx:if="{{dataFlag !==3 &&allCount>50}}">查看更多</button>
+  <button class="monitor_btn" bindtap='startMonitor' wx:if="{{dataFlag !==3 &&allCount<=50}}">开启监控</button>
+  <button class="monitor_btn" bindtap='goRefresh' wx:if="{{dataFlag === 3}}">立即刷新</button>
+</view>
+
+<view class="monitor" wx:if="{{buttonType === 2}}">
+  <button class="monitor_btn" bindtap='goRefresh' wx:if="{{dataFlag === 3}}">立即刷新</button>
+  <button class="monitor_btn" bindtap='goBack' wx:if="{{dataFlag === 4}}">返回重试</button>
+</view>

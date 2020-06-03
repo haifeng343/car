@@ -1,0 +1,92 @@
+<wxs src="../../utils/tools.wxs" module="filter" />
+<view data-index="{{item.index}}" class="monitor_card monitor_long_card {{item.nowHouseCount ==0?'monitor_red_card':''}}" catchtap="checkDetail">
+  <movable-area class="area">
+    <movable-view class="wrapper" direction="horizontal" inertia="true" x="{{x}}" out-of-bounds="true" damping="100" bindchange="handleMovableChange" bindtouchend="handleTouchend">
+      <view class="{{item.nowCarCount ==0?'red_bg':'green_bg'}}"></view>
+      <view class="{{item.nowCarCount ==0?'dred_bg':'dgreen_bg'}}"></view>
+      <view class="card_content">
+        <view class="card_message">
+          <view class="card_address {{item.nowCarCount==0?'text_red':'text_blue'}}">
+            <view class="carIcon carIcon1" wx:if="{{item.brandName}}">
+              <imageExtend src='{{item.iconPath}}' defaultImage="../../assets/image/icon_logo.png" defaultNoneImage="../../assets/image/icon_logo.png" mode="aspectFit" defaultTime="{{30}}" />
+            </view>
+            <view class="carIcon" wx:else>
+              <image class="allCarlogo" src="../../assets/image/allCarLogo.png" mode="aspectFit"></image>
+            </view>
+            <view class="text" wx:if="{{item.brandName && item.seriesName}}">{{item.seriesName}}</view>
+            <view class="text" wx:if="{{item.brandName && !item.seriesName}}">全部车系</view>
+            <view class="text" wx:if="{{!item.brandName && !item.seriesName}}">品牌不限</view>
+            <view class="middel">
+                <text class="icon-font uniE96D"></text>
+              <view class="cityName">{{item.cityName?item.cityName:'全国'}}</view>
+            </view>
+          </view>
+          <view class="card_budget {{item.actualPrice?'':'card_search'}} {{item.nowCarCount==0?'text_red':'text_blue'}}">
+            <view class="card_money" wx:if="{{item.actualPrice}}">
+              <text>¥</text>
+              <text class="money">{{item.actualPrice}}</text>
+              <text>万</text>
+            </view>
+            <view class="card_money" wx:else>
+              <text class="money">暂无车源</text>
+            </view>
+          </view>
+        </view>
+        <view class="card_total">
+          <view class="location">
+            <view>
+              <text wx:if="{{item.minAge==0 && item.maxAge==99}}">不限年份</text>
+              <text wx:if="{{item.minAge>0 && item.maxAge==99}}">{{item.minAge}}年以上</text>
+              <text wx:if="{{item.minAge==0 && item.maxAge<99}}">{{item.maxAge}}年以下</text>
+              <text wx:if="{{item.minAge>0 && item.maxAge<99}}">{{item.minAge}}-{{item.maxAge}}年</text> ｜
+              <text wx:if="{{item.minMileage==0 && item.maxMileage==9999}}">不限里程</text>
+              <text wx:if="{{item.minMileage>0 && item.maxMileage==9999}}">{{item.minMileage}}万里程以上</text>
+              <text wx:if="{{item.minMileage==0 && item.maxMileage<9999}}">{{item.maxAge}}万里程以下</text>
+              <text wx:if="{{item.minMileage>0 && item.maxMileage<9999}}">{{item.minMileage}}-{{item.maxMileage}}万里程</text>
+            </view>
+          </view>
+          <view class="card_price">
+            <view class="card_down_money" wx:if="{{item.minPrice==0&&item.maxPrice==9999}}">
+              <text>预算:不限</text>
+            </view>
+            <view class="card_down_money" wx:if="{{item.minPrice==0&&item.maxPrice<9999}}">
+              <text>预算:低于{{item.maxPrice}}万</text>
+            </view>
+            <view class="card_down_money" wx:if="{{item.minPrice>0&&item.maxPrice==9999}}">
+              <text>预算:高于{{item.minPrice}}万</text>
+            </view>
+            <view class="card_down_money" wx:if="{{item.minPrice>0&&item.maxPrice<9999}}">
+              <text>预算:{{item.minPrice}}-{{item.maxPrice}}万</text>
+            </view>
+          </view>
+        </view>
+        <view class="card_time">
+          <image class="time_monitor" src="../../assets/image/monitor.png"></image>
+          <view class="time_text" wx:if="{{item.minutes||item.minutes == 0}}">
+            <text>监控:</text>
+            <text class="time_line romm_num">{{item.minutes}}</text>
+            <text>分钟,</text>
+            <text>当前:</text>
+            <text class="time_line romm_num">{{item.nowCarCount}}</text>
+            <text>辆</text>
+          </view>
+          <view class="time_text" wx:if="{{item.monitorTime||item.monitorTime == 0&&!item.minutes&&item.minutes!=0}}">
+            <text>监控:</text>
+            <text class="time_line romm_num" wx:if="{{item.dayNum>0}}">{{item.dayNum}}</text>
+            <text wx:if="{{item.dayNum>0}}">天</text>
+            <text class="time_line romm_num">{{item.hourNum}}</text>
+            <text>小时,</text>
+            <text>当前:</text>
+            <text class="time_line romm_num">{{item.nowCarCount}}</text>
+            <text>辆</text>
+          </view>
+          <text class="detail_btn" wx:if="{{item.nowCarCount!=0}}" data-index="{{item.index}}" catchtap="checkDetail">查询详情</text>
+          <text class="detail_btn red_button" wx:else data-index="{{item.index}}" catchtap="checkDetail">查询详情</text>
+        </view>
+      </view>
+    </movable-view>
+  </movable-area>
+  <view class="remove" data-index="{{item.index}}" catchtap="delItem">
+    <image src="../../assets/image/close.png"></image>
+  </view>
+</view>

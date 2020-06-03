@@ -1,0 +1,20 @@
+<view class="loading-window">
+  <view class="car">
+    <view class="strike"></view>
+    <view class="strike strike2"></view>
+    <view class="strike strike3"></view>
+    <view class="strike strike4"></view>
+    <view class="strike strike5"></view>
+    <view class="car-detail spoiler"></view>
+    <view class="car-detail back"></view>
+    <view class="car-detail center"></view>
+    <view class="car-detail center1"></view>
+    <view class="car-detail front"></view>
+    <view class="car-detail wheel"></view>
+    <view class="car-detail wheel wheel2"></view>
+  </view>
+  <view class="text" wx:if="{{loadingtext}}">
+    <text>加载中</text>
+    <text class="dots">...</text>
+  </view>
+</view>

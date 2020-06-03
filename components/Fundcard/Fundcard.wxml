@@ -1,0 +1,63 @@
+<view class="container {{isLoaded ? '' : 'hidden'}} {{data.platformClass}}">
+  <view class="wrapper">
+    <view class="icon flex-box-center-center">
+      <text class="icon-font {{data.icon}}" />
+    </view>
+    <view class="content">
+      <view class="top">
+        <view class="title">{{data.remark}}</view>
+        <view class="money {{data.direction < 0 ? 'up' : 'down'}}">
+          {{data.direction > 0 ? '+' : '-'}}{{data.moneyText}}
+        </view>
+      </view>
+      <block wx:if="{{data.desc}}">
+        <view class="remark">{{data.desc}}</view>
+      </block>
+      <block wx:if="{{data.type === 33}}">
+        <view class="bottom">
+          <view class="withdraw-time">发起时间:{{data.createTime}}</view>
+          <view class="withdraw-status">{{data.remark}}</view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="bottom">
+          <view class="platform-name">
+            <block>{{data.platformName}}</block>
+          </view>
+          <view class="time">{{data.createTime}}</view>
+        </view>
+      </block>
+      <view class="detail" bindtap="handleShowDetail" wx:if="{{data.payList && data.payList.length > 0 && showDetail !== true}}">
+        <text>查看明细 >></text>
+      </view>
+      <block wx:if="{{data.logList && data.logList.length > 0 }}">
+        <view class="withdraw-wrapper">
+          <view class="withdraw-list {{isListInit === true ? '' : 'init'}}" style="height: {{height}}">
+            <block wx:for="{{data.logList}}" wx:for-item="item" wx:key="{{item.createTime}}">
+              <view class="withdraw-item">
+                <text class="withdraw-time">{{item.createTime}}</text>
+                <text class="withdraw-desc">{{item.remark}}</text>
+              </view>
+            </block>
+          </view>
+          <view class="withdraw-platform-name">
+            <block>{{item.platformName}}</block>
+          </view>
+          <view class="withdraw-expand" bindtap="handleExpandClick">
+            <text>{{expand === true ? '收起' : '展开更多'}}</text>
+            <text class="icon-font uniE926 {{expand === true ? 'expand' : ''}}"></text>
+          </view>
+        </view>
+      </block>
+      <view wx:if="{{data.payList && data.payList.length > 0 && showDetail === true}}" wx:for="{{data.payList}}" wx:key="date" class="pay-list">
+        <view class="item">
+          <view class="date">
+            <text class="type">任务结算</text>
+            {{item.createTime}}
+          </view>
+          <view class="money">{{item.moneyText}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

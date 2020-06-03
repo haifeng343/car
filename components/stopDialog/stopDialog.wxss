@@ -1,0 +1,69 @@
+@import "/app.wxss";
+.mask{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 120
+}
+
+.mask_content .mask_collect{
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 48rpx;
+  margin: 42rpx 0 32rpx;
+}
+.mask_content .mask_task{
+  margin: 86rpx 90rpx 0 68rpx;
+  font-size: 32rpx;
+}
+.mask_task .task_start{border-top: 1rpx dashed #1D1D1D;}
+.mask_task .task{
+  padding: 18rpx 0;
+  border-bottom: 1rpx dashed #1D1D1D;
+}
+.mask_task .task text{
+  display: inline-block;
+  white-space: nowrap;
+}
+.mask_task .task text:nth-child(1){
+  width: 37%
+}
+.mask_task .task text:nth-child(2){
+  width: 63%;
+  text-align: right;
+}
+.mask_task .ding{padding: 18rpx 0;text-align: right;}
+.mask_task .ding .num{color: #DA4E3A}
+.mask_content .mask-btn{
+  margin: 44rpx 32rpx 0 32rpx;
+}
+.mask-btn .cancel{
+  display: inline-block;
+  width: 256rpx;
+  height: 92rpx;
+  color: #0050FE;
+  border: 1rpx solid #0050FE;
+  border-radius: 46rpx;
+  text-align: center;
+  line-height: 92rpx;
+  margin-right: 40rpx;
+}
+.mask-btn .confirm{
+  display: inline-block;
+  width: 256rpx;
+  height: 92rpx;
+  background:rgba(0,80,254,1);
+  box-shadow:2px 2px 4px 0px rgba(0,116,188,1);
+  border: 1rpx solid #0050FE;
+  color: #FFFFFF;
+  border-radius: 46rpx;
+  text-align: center;
+  line-height: 92rpx;
+}

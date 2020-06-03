@@ -1,0 +1,33 @@
+var firstPayfun = function(f){
+  return f&&f.substring(0, f.length - 1)
+}
+var lowPricefun = function (f) {
+  return f && +(f/10000).toFixed(2)
+}
+var arrCompare=function(arr1,arr2){
+  if (JSON.stringify(arr1) == JSON.stringify(arr2)){
+    return 1
+  }else{
+    return 2
+  }
+}
+var checkType = function (arr, item) {
+  item = +item
+  return arr.indexOf(item) >= 0
+};
+var showText = function (min, max, defaultNumber, text) {
+  if (min === 0 && max === defaultNumber) {
+    return "不限" + text;
+  } else if (max !== defaultNumber) {
+    return min + ' - ' + max;
+  } else {
+    return min + '以上'
+  }
+}
+module.exports = {
+  firstPayfun: firstPayfun,
+  lowPricefun: lowPricefun,
+  arrCompare: arrCompare,
+  checkType: checkType,
+  showText: showText
+}

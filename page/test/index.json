@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "FilterBar": "../../components/FilterBar/index"
+  },
+  "navigationBarTitleText": "测试",
+  "disableScroll": true
+}

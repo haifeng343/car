@@ -1,0 +1,58 @@
+<view class="header">
+  <FilterBar data="{{updateData}}" bind:onSubmit="submit" />
+  <checkDetail wx:if="{{dataFlag === 1}}" showCount="{{allOriginalData.length}}" allCount="{{allCount}}" lowPrice="{{lowPrice}}" sortType="{{sortType}}" bind:detailEvent="goToDetail"></checkDetail>
+</view>
+<view class="block"></view>
+<view class="card_list {{dataFlag === 2||dataFlag === 3 ? 'section_empty' : ''}}">
+  <searchEmpty wx:if="{{dataFlag === 2}}" searchType="{{1}}"></searchEmpty>
+  <noNetwork wx:if="{{dataFlag === 3}}"title="网络异常，请刷新重试"></noNetwork>
+  <view class="car_card" wx:if="{{dataFlag === 1}}">
+    <block wx:for="{{allData}}" wx:key="index" >
+      <usedCarCard item="{{item}}" cardType="{{1}}"></usedCarCard>
+    </block>
+
+    <view class="no_more_data" wx:if="{{allData.length&&allData.length==allOriginalData.length&&!loadingShow}}">
+      <view wx:if="{{allCount>50}}">已展示全部车源</view>
+      <view wx:else>车源已加载完，您还可以开启监控，查看<text class="rules_txt" bindtap="navtoMonitorRule">监控规则</text></view>
+    </view>
+    <view class="dot_load">
+      <mpLoading type="dot-gray" tips="加载中" show="{{loadingShow}}"></mpLoading>
+    </view>
+  </view>
+</view>
+<carLoading loadingDisplay="{{loadingDisplay}}"></carLoading>
+<monitorButton 
+  wx:if="{{loadingDisplay === 'none'}}" 
+  buttonType="{{1}}" 
+  dataFlag="{{dataFlag}}" 
+  allCount="{{allCount}}"
+  bind:startMonitorEvent="startMonitor"
+  bind:goRefreshEvent="goRefresh">
+</monitorButton>
+
+<monitorDialog 
+  title="{{monitorTitle}}" 
+  fee="{{fee}}" 
+  ddCoin="{{ddCoin}}" 
+  bindPublic="{{bindPublic}}" 
+  bind:monitorPublicEvent="getMonitorPublicEvent" 
+  bind:monitorEvent="getMonitorEvent" 
+  bind:monitorConfirmEvent="getmonitorConfirmEvent" 
+  style="display:{{monitorDisplay}}">
+</monitorDialog>
+
+<publicDialog 
+  style="display:{{publicDisplay}}" 
+  bind:publicEvent="getPublicEvent" 
+  bind:publicConfrimEvent="getPublicConfrimEvent">
+</publicDialog>
+
+<monitorEnoughDialog 
+  dialogTitle="{{dialogTitle}}" 
+  dialogText="{{dialogText}}" 
+  dialogBtn="{{dialogBtn}}" 
+  style="display:{{monitorenoughDisplay}}" 
+  list="{{enoughList}}" 
+  enoughType="{{1}}"
+  bind:enoughEvent="getEnoughEvent">
+</monitorEnoughDialog>

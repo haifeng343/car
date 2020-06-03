@@ -1,0 +1,36 @@
+<view class="monit_start" wx:if="{{bottomType === 1&&!editFlag}}">
+  <view>
+    <text class="time_line">监控时长:</text>
+    <text class="price time_line">{{taskTime}}</text>
+    <text class="time_line">消费:</text>
+    <text class="price">{{totalFee}}币</text>
+    <button class="monit_btn" bindtap="stopMonitor">结束监控</button>
+  </view>
+</view>
+
+<view class="monit_start monit_save" wx:if="{{bottomType === 2}}">
+  <view>
+    <text class="monit_btn monit_back" bindtap="goBack">返回监控</text>
+    <text class="monit_btn monit_update" bindtap="goSave">保存修改</text>
+  </view>
+</view>
+
+<view class="monit_select" wx:if="{{bottomType === 1&&editFlag}}">
+  <view class="select">
+    <view class="icon-font uniE930 {{selectAllFlag?'active':''}}" catchtap="goToSelectAll"></view>
+    <text catchtap="goToSelectAll">全选</text>
+    <button wx:if="{{selectNum}}" class="monit_cancel" catchtap="deleteBatchItem">屏蔽车源({{selectNum}})</button>
+    <button wx:else class="monit_cancel" catchtap="deleteBatchItem">屏蔽车源</button>
+  </view>
+</view>
+
+<view class="monit_start" wx:if="{{bottomType === 4}}">
+  <view>
+    <text class="time_line">收费标准:</text>
+    <text class="price">{{fee}}币/</text>
+    <text class="t_text">时</text>
+    <text class="time_line">余额:</text>
+    <text class="price">{{ddCoin}}币</text>
+    <button class="monit_btn" bindtap="startMonitor">开启监控</button>
+  </view>
+</view>

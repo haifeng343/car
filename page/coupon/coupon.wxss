@@ -1,0 +1,85 @@
+@import '../../assets/styles/font.wxss';
+page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+page .page {
+  background-color: #f9f9f9;
+  height: 100%;
+}
+page .page .header {
+  height: 100rpx;
+  background-color: #ffffff;
+  color: #1d1d1d;
+}
+page .page .header .tab-list {
+  height: 100%;
+  widows: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+page .page .header .tab-list .tab-item {
+  font-size: 32rpx;
+  font-weight: 300;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 40rpx;
+}
+page .page .header .tab-list .tab-item.active {
+  font-weight: 500;
+  color: #0050FE;
+}
+page .page .header .tab-list .tab-item.active text {
+  position: relative;
+}
+page .page .header .tab-list .tab-item.active text::after {
+  content: '';
+  width: 60rpx;
+  height: 4rpx;
+  background-color: white;
+  border-radius: 4rpx;
+  position: absolute;
+  bottom: -8rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+page .scroll-view {
+  height: calc(100% - 100rpx);
+  display: flex;
+  flex-direction: column;
+  padding-top: 24rpx;
+  box-sizing: border-box;
+}
+page .coupon-list {
+  margin-bottom: 40rpx;
+}
+page .coupon-list .coupon-item {
+  margin-bottom: 24rpx;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+page .rule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: #e75d28;
+  font-size: 24rpx;
+}
+page .button {
+  height: 100rpx;
+  background-color: #fff;
+  display: flex;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  color: #1d1d1d;
+  z-index: 9999;
+}

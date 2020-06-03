@@ -1,0 +1,96 @@
+<wxs src="../../utils/tools.wxs" module="filter" />
+<view class="monitor_card monitor_gray_card monitor_long_card" data-index="{{item.index}}" data-type='1' bindtap="handleClick">
+  <movable-area class="area">
+    <movable-view class="wrapper" direction="horizontal" inertia="true" x="{{x}}" out-of-bounds="true" damping="100" bindchange="handleMovableChange" bindtouchend="handleTouchend">
+      <view class="bg"></view>
+      <view class="card_content">
+          <view class="card_message">
+            <view class="card_address">
+             <view class="carIcon carIcon1" wx:if="{{item.brandName}}">
+                <imageExtend src='{{item.iconPath}}' defaultImage="../../assets/image/icon_logo.png" defaultNoneImage="../../assets/image/icon_logo.png" mode="aspectFit" defaultTime="{{30}}"/>
+              </view>
+              <view class="carIcon" wx:else>
+               <image class="allCarLogo" src="../../assets/image/allCarLogo.png" mode="aspectFit"></image>
+              </view>
+            <view class="text" wx:if="{{item.brandName && item.seriesName}}">{{item.seriesName}}</view>
+            <view class="text" wx:if="{{item.brandName && !item.seriesName}}">全部车系</view>
+            <view class="text" wx:if="{{!item.brandName && !item.seriesName}}">品牌不限</view>
+              <view class="middel">
+                <text class="icon-font uniE96D card_location"></text>
+                <view class="cityName">{{item.cityName?item.cityName:'全国'}}</view>
+              </view>
+            </view>
+            <view class="card_budget {{item.status == 12?'past_card':''}} {{item.actualPrice?'card_search':'card_search'}}">
+              <view class="card_money" wx:if="{{item.status == 12}}">
+                <text class="money">已过期</text>
+              </view>
+              <view class="card_money" wx:else>
+                <text class="money">已暂停</text>
+              </view>
+            </view>
+          </view>
+          <view class="card_total" >
+            <view class="card_price">
+              <view class="card_down_money" wx:if="{{item.minPrice==0&&item.maxPrice==9999}}">
+                  <text>预算:不限</text>
+                </view>
+                <view class="card_down_money" wx:if="{{item.minPrice==0&&item.maxPrice<9999}}">
+                  <text>预算:低于{{item.maxPrice}}万</text>
+                </view>
+                <view class="card_down_money" wx:if="{{item.minPrice>0&&item.maxPrice==9999}}">
+                  <text>预算:高于{{item.minPrice}}万</text>
+                </view>
+                <view class="card_down_money" wx:if="{{item.minPrice>0&&item.maxPrice<9999}}">
+                  <text>预算:{{item.minPrice}}-{{item.maxPrice}}万</text>
+                </view>
+            </view>
+          </view>
+        <view class="card_time" wx:if="{{item.status == 12}}" data-index="{{index}}">
+          <image class="time_monitor" src="../../assets/image/overtime.png"></image>
+          <view class="time_text" wx:if="{{item.minutes||item.minutes == 0}}">
+            <text class="pay_money">累积监控{{item.minutes}}分</text>
+          </view>
+          <view class="time_text" wx:if="{{item.monitorTime||item.monitorTime == 0&&!item.minutes&&item.minutes!=0}}">
+            <text class="pay_money" wx:if="{{item.dayNum>0}}">累积监控{{item.dayNum}}天{{item.hourNum}}小时</text>
+            <text class="pay_money" wx:if="{{item.dayNum==0}}">累积监控{{item.hourNum}}小时</text>
+          </view>
+          <text data-index="{{item.index}}" class="detail_btn activate_btn" catchtap="delItem">结算任务</text>
+        </view>
+
+        <view class="card_time" wx:if="{{item.status == 11&&ddCoin>=item.fee}}">
+          <image class="time_monitor" src="../../assets/image/pause.png"></image>
+          <view class="time_text">
+            <text class="pay_money">暂停中，点击开启任务</text>
+          </view>
+          <text class="detail_btn activate_btn" data-index="{{item.index}}" catchtap="openTask">立即开启</text>
+        </view>
+
+        <view class="card_time" wx:if="{{item.status == 11&&ddCoin<item.fee}}">
+          <image class="time_monitor" src="../../assets/image/pause.png"></image>
+          <view class="time_text">
+            <text class="pay_money">盯盯币不足，已暂停</text>
+          </view>
+          <text class="detail_btn activate_btn" catchtap="recharge" data-type='1'>立即充值</text>
+        </view>
+
+        <view class="card_time" wx:if="{{item.status == 0&&ddCoin>=item.fee}}">
+          <image class="time_monitor" src="../../assets/image/pause.png"></image>
+          <view class="time_text">
+            <text class="pay_money">未开启，点击开启任务</text>
+          </view>
+          <text class="detail_btn activate_btn" data-index="{{item.index}}" catchtap="openTask">立即开启</text>
+        </view>
+        <view class="card_time" wx:if="{{item.status == 0&&ddCoin<item.fee}}">
+          <image class="time_monitor" src="../../assets/image/pause.png"></image>
+          <view class="time_text">
+            <text class="pay_money">盯盯币不足</text>
+          </view>
+          <text class="detail_btn activate_btn" catchtap="recharge" data-type='1'>立即充值</text>
+        </view>
+      </view>
+    </movable-view>
+  </movable-area>
+  <view class="remove" data-index="{{item.index}}" catchtap="delItem">
+    <image src="../../assets/image/close.png"></image>
+  </view>
+</view>

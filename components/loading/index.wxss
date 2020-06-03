@@ -1,0 +1,265 @@
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(36deg);
+  }
+  20% {
+    transform: rotate(72deg);
+  }
+  30% {
+    transform: rotate(108deg);
+  }
+  40% {
+    transform: rotate(144deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  60% {
+    transform: rotate(216deg);
+  }
+  70% {
+    transform: rotate(252deg);
+  }
+  80% {
+    transform: rotate(288deg);
+  }
+  90% {
+    transform: rotate(324deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes strikes {
+  0% {
+    opacity: 1;
+    left: 50rpx;
+  }
+  100% {
+    left: -160rpx;
+    opacity: 0;
+  }
+}
+@keyframes strikes2 {
+  0% {
+    opacity: 0;
+    left: 50rpx;
+  }
+  19.99% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    left: -160rpx;
+    opacity: 0;
+  }
+}
+@keyframes strikes3 {
+  0% {
+    opacity: 0;
+    left: 50rpx;
+  }
+  32.99% {
+    opacity: 0;
+  }
+  33% {
+    opacity: 1;
+  }
+  100% {
+    left: -160rpx;
+    opacity: 0;
+  }
+}
+@keyframes strikes4 {
+  0% {
+    opacity: 0;
+    left: 50rpx;
+  }
+  42.99% {
+    opacity: 0;
+  }
+  43% {
+    opacity: 1;
+  }
+  100% {
+    left: -160rpx;
+    opacity: 0;
+  }
+}
+@keyframes strikes5 {
+  0% {
+    opacity: 0;
+    left: 50rpx;
+  }
+  49.99% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    left: -160rpx;
+    opacity: 0;
+  }
+}
+@keyframes dots {
+  from {
+    width: 0rpx;
+  }
+  to {
+    width: 30rpx;
+  }
+}
+
+.loading-window {
+  border-radius: 12rpx;
+  color: #0050fe;
+  height: 400rpx;
+  left: 50%;
+  margin-left: -300rpx;
+  margin-top: -200rpx;
+  position: fixed;
+  top: 40%;
+  width: 600rpx;
+  z-index: 99;
+}
+.loading-window .text {
+  font-size: 32rpx;
+  position: absolute;
+  width: auto;
+  top: 75%;
+  left: 38%;
+  margin: 0 auto;
+}
+.loading-window .dots {
+  display: inline-block;
+  width: 10rpx;
+  overflow: hidden;
+  vertical-align: bottom;
+  animation: dots 1.5s linear infinite;
+  transition: 1;
+}
+
+.car {
+  position: absolute;
+  width: 234rpx;
+  height: 84rpx;
+  left: 184rpx;
+  top: 140rpx;
+}
+.car .strike {
+  position: absolute;
+  width: 22rpx;
+  height: 2rpx;
+  background: #0050fe;
+  animation: strikes 0.2s linear infinite forwards;
+  opacity: 0;
+}
+.car .strike2 {
+  top: 22rpx;
+  animation: strikes2 0.25s linear infinite forwards;
+}
+.car .strike3 {
+  top: 44rpx;
+  animation: strikes3 0.3s linear infinite forwards;
+}
+.car .strike4 {
+  top: 66rpx;
+  animation: strikes4 0.35s linear infinite forwards;
+}
+.car .strike5 {
+  top: 88rpx;
+  animation: strikes5 0.4s linear infinite forwards;
+}
+.car-detail {
+  position: absolute;
+  display: block;
+  background: #0050fe;
+}
+.car-detail.spoiler {
+  width: 0;
+  height: 0;
+  top: 14rpx;
+  background: none;
+  border: 40rpx solid transparent;
+  border-bottom: 16rpx solid #0050fe;
+  border-left: 40rpx solid #0050fe;
+}
+.car-detail.back {
+  height: 40rpx;
+  width: 184rpx;
+  top: 30rpx;
+  left: 0rpx;
+}
+.car-detail.center {
+  height: 70rpx;
+  width: 150rpx;
+  left: 24rpx;
+  border-top-left-radius: 60rpx;
+  border-top-right-radius: 90rpx 80rpx;
+  border: 8rpx solid #0050fe;
+  background: none;
+  box-sizing: border-box;
+}
+.car-detail.center1 {
+  height: 70rpx;
+  width: 70rpx;
+  left: 24rpx;
+  border-top-left-radius: 60rpx;
+}
+.car-detail.front {
+  height: 40rpx;
+  width: 100rpx;
+  top: 30rpx;
+  left: 134rpx;
+  border-top-right-radius: 100rpx 80rpx;
+  border-bottom-right-radius: 20rpx;
+}
+.car-detail.wheel {
+  height: 40rpx;
+  width: 40rpx;
+  border-radius: 50%;
+  top: 40rpx;
+  left: 24rpx;
+  border: 6rpx solid #fff;
+  background: linear-gradient(
+      45deg,
+      transparent 45%,
+      #0050fe 46%,
+      #0050fe 54%,
+      transparent 55%
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 45%,
+      #0050fe 46%,
+      #0050fe 54%,
+      transparent 55%
+    ),
+    linear-gradient(
+      90deg,
+      transparent 45%,
+      #0050fe 46%,
+      #0050fe 54%,
+      transparent 55%
+    ),
+    linear-gradient(
+      0deg,
+      transparent 45%,
+      #0050fe 46%,
+      #0050fe 54%,
+      transparent 55%
+    ),
+    radial-gradient(#0050fe 29%, transparent 30%, transparent 50%, #0050fe 51%),
+    #fff;
+  animation: 0.5s spin linear infinite;
+}
+.car-detail.wheel2 {
+  left: 164rpx;
+}

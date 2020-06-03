@@ -1,0 +1,19 @@
+
+<view class="mask" bindtap="bindClose" catchtouchmove="preventTouchMove">
+    <view class="mask_content" catchtap="stopEvent">
+      <view class="house_image">
+        <image class="image" src="../../assets/image/wechat.png"></image>
+      </view>
+      <view class="content">
+        <view class="title">关注公众号提醒</view>
+        <view class="text">为了能够及时的给您推送监控通知，需您微信手动关注我们的公众号<text class="ding">“帮盯盯”</text></view>
+        <view class="text">对话框回复1识别二维码关注</view>
+        <button open-type="contact" class="btn" catchtap="bindConfirm">前往关注</button>
+      </view>
+      <view class="mask_colse">
+        <view catchtap="bindClose" class="icon flex-box-center-center">
+          <text class="icon-font uniE91F" />
+        </view>
+      </view>
+    </view>
+  </view>

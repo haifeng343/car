@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "TopPanel": "../TopPanel/index",
+    "Range": "../Range/index"
+  }
+}

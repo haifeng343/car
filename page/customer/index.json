@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "authDialog": "/components/AuthDialog/AuthDialog"
+  },
+  "disableScroll": true,
+  "navigationBarBackgroundColor": "#0050FE",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "联系我们"
+}

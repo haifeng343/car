@@ -1,0 +1,19 @@
+{
+  "usingComponents": {
+    "FilterBar": "../../components/FilterBar/index",
+    "checkDetail": "../../components/checkDetail/checkDetail",
+    "usedCarCard": "../../components/usedCarCard/usedCarCard",
+    "monitorButton": "../../components/monitorButton/monitorButton",
+    "searchEmpty": "../../components/searchEmpty/searchEmpty",
+    "noNetwork": "../../components/noNetwork/noNetwork",
+    "monitorBottom": "../../components/monitorBottom/monitorBottom",
+    "carLoading": "../../components/carLoading/carLoading",
+    "stopDialog": "../../components/stopDialog/stopDialog",
+    "updateDialog": "../../components/updateDialog/updateDialog",
+    "monitorEnoughDialog": "../../components/monitorEnoughDialog/monitorEnoughDialog",
+    "followDialog": "../../components/followDialog/followDialog",
+    "followEdit": "../../components/followEdit/followEdit",
+    "mpLoading": "../../components/loadingMore/loadingMore"
+  },
+  "navigationBarTitleText": "全部品牌"
+}

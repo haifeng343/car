@@ -1,0 +1,17 @@
+@import '../../assets/styles/font.wxss';
+.car_detail {
+  display: flex;
+  align-items: center;
+  height: 88rpx;
+  background:rgba(0,80,254,0.14);
+  padding: 0 28rpx;
+  z-index: 33;
+  justify-content: space-between;
+  font-size: 28rpx;
+}
+.car_detail .check_view {color: #1d1d1d;}
+.car_detail .check_detail {color: #0050FE}
+.check_detail .uniE90C{
+  font-size: 24rpx;
+  margin: 0 0 0 10rpx;
+}

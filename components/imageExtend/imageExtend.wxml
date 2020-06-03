@@ -1,0 +1,5 @@
+<image wx:if="{{src}}" class="image-extend source-image image-long-extend" src="{{src}}" mode="{{mode}}" bindload="handleImageLoaded"></image>
+<image wx:else class="image-extend source-image image-long-extend" src="{{defaultNoneImage}}" mode="{{mode}}" bindload="handleImageLoaded"></image>
+<view wx:if="{{!isDestroyBase}}" class="base-image-container image-long-extend {{!isLoaded ? '' : 'hidden'}}">
+  <image class="image-extend base-image" src="{{defaultImage}}" mode="{{mode}}"></image>
+</view>

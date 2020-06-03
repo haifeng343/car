@@ -1,0 +1,84 @@
+<view class="page">
+  <view class="header">
+    <view class="content">
+     <view class="content-bgColor">
+      <block wx:if="{{nickName}}">
+        <view class="user">
+          <!-- <image class="avator" src="{{headPortrait}}" /> -->
+          <view class="avator" wx:if="{{headPortrait}}">
+            <imageExtend src='{{headPortrait}}' defaultImage="../../assets/image/avator.png" defaultNoneImage="../../assets/image/avator.png" defaultTime="{{30}}"/>
+          </view>
+          <view>
+            <view class="name">{{nickName}}</view>
+            <view class="name" wx:if="{{mobile && IsMobile}}">{{mobile}}</view>
+            <view class="name" wx:else bindtap="gotoBindPhone">点击绑定手机号 >></view>
+          </view>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="user" bindtap="handleAuth">
+          <image class="avator" src="../../assets/image/avator.png" />
+          <view class="name">
+            <text>点击授权</text>
+            <text class="icon-font uniE92A" />
+          </view>
+        </view>
+      </block>
+     </view>
+      <view class="action-list">
+        <view class="action-item">
+          <view class="title">账户余额(元)</view>
+          <view class="number">{{totalMoney}}</view>
+          <view class="btn" bindtap="handleGotoDeposit" data-type="1">充值</view>
+        </view>
+        <text class="icon-font uniE927 theme" />
+        <view class="action-item">
+          <view class="title" bindtap="handleShowTipDialog">
+            <text>盯盯币</text>
+            <text class="icon-font uniE92D"></text>
+          </view>
+          <view class="number">{{useCoin}}</view>
+          <view class="btn" bindtap="handleGotoDeposit" data-type="2">兑换</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <scroll-view scroll-y class="menu-list">
+    <view class="menu-item" bindtap="handleGotoFund">
+      <menuItem label="历史账单" icon="uniE966" />
+    </view>
+    <view class="menu-item" bindtap="handleGotoCoupon">
+      <menuItem label="我的卡券" icon="uniE965" desc="{{couponDesc}}" />
+    </view>
+    <view class="menu-item" bindtap="handleGotoHistory">
+      <menuItem label="历史监控" icon="uniE964" />
+    </view>
+    <view class="menu-item" bindtap="handleShare">
+      <menuItem label="分享给好友" icon="uniE911" desc="{{shareDesc}}" />
+    </view>
+    <view class="menu-item" bindtap="handleGotoFeedBack">
+      <menuItem label="留言反馈" icon="uniE91A" />
+    </view>
+    <button open-type="contact" class="contact">
+      <span class="icon-font uniE96A"></span>
+      <span>联系客服</span>
+    </button>
+  </scroll-view>
+  <authDialog bind:onConfirm="handleGetUserInfo" bind:onCancel="handleCloseAuthDialog" wx:if="{{showAuthDialog}}" />
+  <ShareCard wx:if="{{showShareCard}}" bind:onClose="handleCloseShareCard" />
+  <view wx:if="{{showTipDialog}}" class="tipDialog">
+    <view class="dialog-overlay" bindtap="handleCloseTipDialog"></view>
+    <view class="dialog-container">
+      <view class="dialog-title">
+        <text>盯盯币说明</text>
+      </view>
+      <view class="dialog-content">
+        <text>1、盯盯币可用于支付监控费用，无法兑现；</text>
+      </view>
+      <view class="dialog-button">
+        <view class="button" bindtap="handleCloseTipDialog">知道了</view>
+      </view>
+    </view>
+  </view>
+</view>
+<CouponDialog wx:if="{{showCouponDialog}}" couponList="{{couponList}}" title="被优惠券砸中啦" bind:onClose="handleCloseCouponDialog" />
